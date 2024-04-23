@@ -15,6 +15,7 @@ namespace AvaloniaApplication.Views
             IconBtn.Click += IconBtn_Click;
             CartBtn.Click += CartBtn_Click;
             ProfileBtn.Click += ProfileBtn_Click;
+            GlobalBuffer._mainGrid = MainGrid;
             Add();
         }
 
