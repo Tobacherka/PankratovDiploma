@@ -1,0 +1,68 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication.Views.Catalog">
+
+	<Grid RowDefinitions="* 30*">
+		<Grid Grid.Column="0" ColumnDefinitions="* 5*">
+			<Button x:Name="SearchBtn" Grid.Column="0" IsVisible="true" Background="Transparent" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+				<Image Source="{SvgImage /Assets/search.svg}"/>
+			</Button>
+
+			<Border x:Name="Search" Grid.Column="0" IsVisible="false" CornerRadius="7" BorderThickness="2" BorderBrush="black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+				<Grid>
+					<TextBox Classes="search" FontSize="11" Background="White" CornerRadius="6" MinHeight="0" BorderThickness="0" Padding="5 2.5 21 2.5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Watermark="Search" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+					<Button Background="Transparent" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="1.75" Height="17.5">
+						<Image Source="{SvgImage /Assets/search.svg}"/>
+					</Button>
+				</Grid>
+			</Border>
+		</Grid>
+		
+		<Grid Grid.Row="1" ColumnDefinitions="* 60*">
+			<Grid Grid.Column="0" RowDefinitions="auto auto">
+				<Button Grid.Row="0" Background="Transparent" Margin="0 10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+					<Image Source="{SvgImage /Assets/menu of categories.svg}"/>
+					<Button.Flyout >
+						<Flyout Placement="RightEdgeAlignedTop">
+							<Border Background="#ffffff" CornerRadius="10" BorderThickness="1.5" BorderBrush="#3f000000" Margin="2.5 0 0 0">
+								<ListBox Classes="catalog" Background="Transparent" Padding="15 7.5" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+									<ListBoxItem>Test</ListBoxItem>
+									<ListBoxItem>Test</ListBoxItem>
+									<ListBoxItem>Test</ListBoxItem>
+									<ListBoxItem>Test</ListBoxItem>
+									<ListBoxItem>Test</ListBoxItem>
+								</ListBox>
+							</Border>
+						</Flyout>
+					</Button.Flyout>
+				</Button>
+
+				<Button Grid.Row="1" Background="Transparent" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+					<Image Source="{SvgImage /Assets/filter.svg}"/>
+					<Button.Flyout >
+						<Flyout Placement="RightEdgeAlignedTop">
+							<Border Background="#ffffff" CornerRadius="10" BorderThickness="1.5" BorderBrush="#3f000000" Margin="2.5 0 0 0">
+								<ListBox Classes="catalog" Background="Transparent" Padding="15 7.5" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+									<ListBoxItem>Test</ListBoxItem>
+									<ListBoxItem>Test</ListBoxItem>
+									<ListBoxItem>Test</ListBoxItem>
+									<ListBoxItem>Test</ListBoxItem>
+									<ListBoxItem>Test</ListBoxItem>
+								</ListBox>
+							</Border>
+						</Flyout>
+					</Button.Flyout>
+				</Button>
+			</Grid>
+
+			<ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden">
+				<Grid x:Name="GridForCatalog" RowDefinitions="* * * * * *" ColumnDefinitions="* * * * * *" Margin="12.5 0"/>
+			</ScrollViewer>
+		</Grid>
+	</Grid>
+	
+</UserControl>

@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication.Views.SettingUsers">
+	
+	<Grid x:Name="GridForSettingUsers" ColumnDefinitions="* 3*" RowDefinitions="* * 0.33* 0.33* 0.33* *">
+		<ScrollViewer Grid.Column="1" Grid.RowSpan="6" Margin="0" VerticalScrollBarVisibility="Hidden">
+			<Grid Margin="87.5 37.5" RowDefinitions="auto auto auto">
+				<StackPanel Margin="0 0 0 25" Spacing="7.5">
+					<TextBlock Text="Персональная информация:" FontSize="15" FontWeight="Bold" TextDecorations="Underline"/>
+
+					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="ФИО:"/>
+					<TextBox Classes="black" FontSize="11" CornerRadius="7" Background="Transparent" BorderThickness="1.25" BorderBrush="#000000" MinHeight="0" Padding="5" Text="test" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+
+					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Дата рождения:"/>
+					<TextBox Classes="black" FontSize="11" CornerRadius="7" Background="Transparent" BorderThickness="1.25" BorderBrush="#000000" MinHeight="0" Padding="5" Text="test" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+
+					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Адрес доставки:"/>
+					<TextBox Classes="black" FontSize="11" CornerRadius="7" Background="Transparent" BorderThickness="1.25" BorderBrush="#000000" MinHeight="0" Padding="5" Text="test" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+
+					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Банковская карта:"/>
+					<TextBox Classes="black" FontSize="11" CornerRadius="7" Background="Transparent" BorderThickness="1.25" BorderBrush="#000000" MinHeight="0" Padding="5" Text="test" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+				</StackPanel>
+
+				<StackPanel Grid.Row="1" Margin="0 25 0 0" Spacing="7.5">
+					<TextBlock Text="Контактная информация:" FontSize="15" FontWeight="Bold" TextDecorations="Underline"/>
+
+					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Номер телефона:"/>
+					<TextBox Classes="black" FontSize="11" CornerRadius="7" Background="Transparent" BorderThickness="1.25" BorderBrush="#000000" MinHeight="0" Padding="5" Text="test" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+
+					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Электронная почта:"/>
+					<TextBox Classes="black" FontSize="11" CornerRadius="7" Background="Transparent" BorderThickness="1.25" BorderBrush="#000000" MinHeight="0" Padding="5" Text="test" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+				</StackPanel>
+
+				<Button Classes="white" Grid.Row="2" Margin="0 12.5" CornerRadius="7" Padding="10 5" Background="#bfff0000" FontSize="13" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center">
+					<TextBlock Text="Изменить"/>
+				</Button>
+				<Button IsVisible="False" Classes="white" Grid.Row="2" Margin="0 12.5" CornerRadius="7" Padding="10 5" Background="#bfff0000" FontSize="13" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center">
+					<TextBlock Text="Сохранить"/>
+				</Button>
+			</Grid>
+		</ScrollViewer>
+	</Grid>
+</UserControl>

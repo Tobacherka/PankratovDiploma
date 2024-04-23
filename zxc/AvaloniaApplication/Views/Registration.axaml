@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication.Views.Registration">
+
+	<Grid RowDefinitions="* 1.675* *" ColumnDefinitions="2* * 2*">
+		<Border Grid.Row="1" Grid.Column="1" Background="white" CornerRadius="30" BoxShadow="0 0 25 #7f000000">
+			<Grid Margin="25" RowDefinitions="* * * * * * 0.5* *">
+				<Button x:Name="LogInBtn" Grid.Row="0" Padding="0" Background="Transparent" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top">
+					<TextBlock Text="Вход"/>
+				</Button>
+				<Button Grid.Row="0" Padding="0" Background="Transparent" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Top">
+					<TextBlock Text="Регистрация"/>
+				</Button>
+				
+				<TextBox x:Name="NameTextBox" Classes="red" Grid.Row="1" Margin="0 5" CornerRadius="7" Background="#3fff0000" BorderThickness="0" FontSize="11" MinHeight="0" Padding="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Watermark="Имя"/>
+				<TextBox x:Name="SurnameTextBox" Classes="red" Grid.Row="2" Margin="0 5" CornerRadius="7" Background="#3fff0000" BorderThickness="0" FontSize="11" MinHeight="0" Padding="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Watermark="Фамилия"/>
+				<TextBox x:Name="MailTextBox" Classes="red" Grid.Row="3" Margin="0 5" CornerRadius="7" Background="#3fff0000" BorderThickness="0" FontSize="11" MinHeight="0" Padding="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Watermark="Электронная почта"/>
+				<TextBox x:Name="PasswordTextBox" Classes="red" Grid.Row="4" Margin="0 5" CornerRadius="7" Background="#3fff0000" BorderThickness="0" FontSize="11" MinHeight="0" Padding="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PasswordChar="*" Watermark="Пароль"/>
+				<TextBox x:Name="PasswordRepeatTextBox" Classes="red" Grid.Row="5" Margin="0 5" CornerRadius="7" Background="#3fff0000" BorderThickness="0" FontSize="11" MinHeight="0" Padding="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PasswordChar="*" Watermark="Повторите пароль"/>
+				
+				<TextBlock x:Name="ErrorText" Grid.Row="6" Margin="0 2.5" Text="" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+				
+				<Button x:Name="RegistrationBtn" Classes="white" Grid.Row="7" CornerRadius="7" Padding="10 5" Background="#bfff0000" FontSize="13" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+					<TextBlock Text="Зарегистрироваться"/>
+				</Button>
+			</Grid>
+		</Border>
+	</Grid>
+
+</UserControl>

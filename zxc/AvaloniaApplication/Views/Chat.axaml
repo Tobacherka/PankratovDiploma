@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication.Views.Chat">
+
+	<Grid ColumnDefinitions="* 3* *">
+		<Border Grid.Column="1" Margin="0 12.5" Background="white" CornerRadius="30" BoxShadow="0 0 25 #7f000000">
+			<Grid>
+				<TextBlock FontSize="15" FontWeight="Bold" Margin="0 25" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Поддержка" TextDecorations="Underline"/>
+				
+				<ScrollViewer VerticalScrollBarVisibility="Hidden">
+					<StackPanel Spacing="15"/>
+				</ScrollViewer>
+				
+				<Border Margin="50 25" CornerRadius="7" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+					<Grid>
+						<TextBox Classes="myReview" TextWrapping="Wrap" FontSize="13" MinHeight="0" Padding="5 2.5 25 2.5" CornerRadius="5" BorderThickness="0" Watermark="Сообщение" Background="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+						<Button Background="Transparent" Margin="2.5" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="20">
+							<Image Source="{SvgImage /Assets/to send.svg}"/>
+						</Button>
+					</Grid>
+				</Border>
+			</Grid>	
+		</Border>
+	</Grid>
+	
+</UserControl>

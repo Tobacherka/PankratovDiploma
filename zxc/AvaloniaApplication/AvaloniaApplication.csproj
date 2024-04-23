@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <None Remove="Assets\background.png" />
+    <None Remove="Assets\cart.svg" />
+    <None Remove="Assets\category.svg" />
+    <None Remove="Assets\chat.svg" />
+    <None Remove="Assets\filter.svg" />
+    <None Remove="Assets\logo.svg" />
+    <None Remove="Assets\photo.png" />
+    <None Remove="Assets\profile.svg" />
+    <None Remove="Assets\search.svg" />
+    <None Remove="Assets\search_min.svg" />
+    <None Remove="Assets\send.svg" />
+    <None Remove="Assets\star.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.0.10" />
+    <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0.17" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.10" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.10" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.10" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.10" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\User.axaml.cs">
+      <DependentUpon>User.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

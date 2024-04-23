@@ -1,0 +1,95 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:local="clr-namespace:AvaloniaApplication.Classes" 
+			 x:Class="AvaloniaApplication.Views.CardProduct">
+
+	<UserControl.Resources>
+		<local:WidthMinusPaddingConverter x:Key="WidthMinusPaddingConverter"/>
+	</UserControl.Resources>
+	
+	<Grid x:Name="GridForCardProduct" ColumnDefinitions="* 3*" RowDefinitions="* * *">
+		<ScrollViewer Grid.Column="1" Grid.RowSpan="3" Margin="0" VerticalScrollBarVisibility="Hidden">
+			<Grid x:Name="GridForStackPanel" Margin="87.5 37.5" RowDefinitions="auto auto">
+				<StackPanel Grid.Row="0" Margin="0 0 0 25">
+					<TextBlock Text="Характеристики:" FontSize="15" FontWeight="Bold" TextDecorations="Underline"/>
+					<ListBox Classes="cardproduct" Background="Transparent" Margin="0 12.5 0 0" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+						<ListBoxItem>
+							<TextBox Text="• text text text text text text text" IsEnabled="False" Classes="characteristics" MinHeight="0"  Background="Transparent" CornerRadius="3" BorderThickness="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="13" FontWeight="Medium" Margin="0 5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+						</ListBoxItem>
+						<ListBoxItem>
+							<TextBox Text="• text text text text text text text" IsEnabled="False" Classes="characteristics" MinHeight="0"  Background="Transparent" CornerRadius="3" BorderThickness="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="13" FontWeight="Medium" Margin="0 5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+						</ListBoxItem>
+						<ListBoxItem>
+							<TextBox Text="• text text text text text text text" IsEnabled="False" Classes="characteristics" MinHeight="0"  Background="Transparent" CornerRadius="3" BorderThickness="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="13" FontWeight="Medium" Margin="0 5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+						</ListBoxItem>
+						<ListBoxItem>
+							<TextBox Text="• text text text text text text text" IsEnabled="False" Classes="characteristics" MinHeight="0"  Background="Transparent" CornerRadius="3" BorderThickness="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="13" FontWeight="Medium" Margin="0 5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+						</ListBoxItem>
+						<ListBoxItem>
+							<TextBox Text="• text text text text text text text" IsEnabled="False" Classes="characteristics" MinHeight="0"  Background="Transparent" CornerRadius="3" BorderThickness="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="13" FontWeight="Medium" Margin="0 5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+						</ListBoxItem>
+					</ListBox>
+				</StackPanel>
+
+				<StackPanel Grid.Row="1" Margin="0 25 0 0">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="Отзывы:" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0 0 5 0" VerticalAlignment="Center"/>
+						<Image Source="{SvgImage /Assets/star.svg}" Height="20" VerticalAlignment="Center" Margin="2.5 0"/>
+						<Image Source="{SvgImage /Assets/star.svg}" Height="20" VerticalAlignment="Center" Margin="2.5 0"/>
+						<Image Source="{SvgImage /Assets/star.svg}" Height="20" VerticalAlignment="Center" Margin="2.5 0"/>
+						<Image Source="{SvgImage /Assets/star.svg}" Height="20" VerticalAlignment="Center" Margin="2.5 0"/>
+						<Image Source="{SvgImage /Assets/star.svg}" Height="20" VerticalAlignment="Center" Margin="2.5 0"/>
+						<TextBlock Text="3 оценки" FontSize="11" FontWeight="Regular" Foreground="#bf000000" Margin="5 0 0 0" VerticalAlignment="Bottom"/>
+					</StackPanel>
+
+					
+					
+					<StackPanel Orientation="Horizontal" Spacing="5" Margin="0 15 0 0">
+						<TextBox x:Name="textbox1" IsEnabled="False" Classes="review" Background="Transparent" CornerRadius="7" BorderThickness="1.5" Padding="5 0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="13" FontWeight="Regular" MaxWidth="{Binding #GridForStackPanel.Bounds.Width, Converter={StaticResource WidthMinusPaddingConverter}}" Text="text text text text text text text text text tex text text text text text"/>
+						<Button x:Name="ChangeBtn1" Background="Transparent" Padding="0" VerticalAlignment="Bottom" Height="17.5">
+							<Image Source="{SvgImage /Assets/to change.svg}"/>
+						</Button>
+						<Button Background="Transparent" Padding="0" VerticalAlignment="Bottom" Height="17.5">
+							<Image Source="{SvgImage /Assets/trash.svg}"/>
+						</Button>
+					</StackPanel>
+
+					<StackPanel Orientation="Horizontal" Spacing="5" Margin="0 15 0 0">
+						<TextBox x:Name="textbox2" IsEnabled="False" Classes="review" Background="Transparent" CornerRadius="7" BorderThickness="1.5" Padding="5 0" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="13" FontWeight="Regular" MaxWidth="{Binding #GridForStackPanel.Bounds.Width, Converter={StaticResource WidthMinusPaddingConverter}}" Text="text text text text text text text text text tex text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text"/>
+						
+						<Button x:Name="ChangeBtn2" Background="Transparent" Padding="0" VerticalAlignment="Bottom" Height="17.5">
+							<Image Source="{SvgImage /Assets/to change.svg}"/>
+						</Button>
+						<Button Background="Transparent" Padding="0" VerticalAlignment="Bottom" Height="17.5">
+							<Image Source="{SvgImage /Assets/trash.svg}"/>
+						</Button>
+					</StackPanel>
+
+					<StackPanel Orientation="Horizontal" Spacing="5" Margin="0 15 0 0">
+						<Grid>
+							<TextBox x:Name="textbox3" TextWrapping="Wrap" IsEnabled="False" Classes="review" Background="Transparent" CornerRadius="7" BorderThickness="1.5" Padding="5 0" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="13" FontWeight="Regular" MaxWidth="{Binding #GridForStackPanel.Bounds.Width, Converter={StaticResource WidthMinusPaddingConverter}}" Text="text text text text text text text text text tex text text text text text"/>
+						</Grid>
+						<Button x:Name="ChangeBtn3" Background="Transparent" Padding="0" VerticalAlignment="Bottom" Height="17.5">
+							<Image Source="{SvgImage /Assets/to change.svg}"/>
+						</Button>
+						<Button Background="Transparent" Padding="0" VerticalAlignment="Bottom" Height="17.5">
+							<Image Source="{SvgImage /Assets/trash.svg}"/>
+						</Button>
+					</StackPanel>
+					
+					<Border Margin="0 25 0 0" CornerRadius="7" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+						<Grid>
+							<TextBox Classes="myReview" TextWrapping="Wrap" FontSize="13" MinHeight="0" Padding="5 2.5 25 2.5" CornerRadius="5" BorderThickness="0" Watermark="Отзыв" Background="Transparent" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+							<Button Background="Transparent" Margin="2.5" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="20">
+								<Image Source="{SvgImage /Assets/to send.svg}"/>
+							</Button>
+						</Grid>
+					</Border>
+				</StackPanel>
+			</Grid>
+		</ScrollViewer>
+	</Grid>
+</UserControl>

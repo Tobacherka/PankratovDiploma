@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication.Views.Authorization">
+
+	<Grid RowDefinitions="* * *" ColumnDefinitions="2* * 2*" >
+		<Border Grid.Row="1" Grid.Column="1" Background="white" CornerRadius="30" BoxShadow="0 0 25 #7f000000">
+			<Grid Margin="25" RowDefinitions="* * * 0.5* 0.5* *" >
+				<Button Grid.Row="0" Padding="0" Background="Transparent" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top">
+					<TextBlock Text="Вход"/>
+				</Button>
+				<Button x:Name="SingUpBtn" Grid.Row="0" Padding="0" Background="Transparent" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Top">
+					<TextBlock Text="Регистрация"/>
+				</Button>
+
+				<TextBox x:Name="LoginText" Classes="red" Grid.Row="1" CornerRadius="7" Margin="0 5" Background="#3fff0000" BorderThickness="0" FontSize="11" MinHeight="0" Padding="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Watermark="Электронная почта"/>
+				<TextBox x:Name="PasswordText" Classes="red" Grid.Row="2" CornerRadius="7" Margin="0 5" Background="#3fff0000" BorderThickness="0" FontSize="11" MinHeight="0" Padding="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PasswordChar="*" Watermark="Пароль"/>
+
+				<Button Grid.Row="3" Background="Transparent" Padding="0" FontSize="11" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Right">
+					<TextBlock Text="Забыли пароль?"/>
+				</Button>
+				<TextBlock x:Name="ErrorText" Margin="0 2.5" Grid.Row="4" Text="" FontSize="11" VerticalAlignment="Center"/>
+				
+				<Button x:Name="LogInBtn" Classes="white" Grid.Row="5" CornerRadius="7" Padding="10 5" Background="#bfff0000" FontSize="13" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+					<TextBlock Text="Войти"/>
+				</Button>
+			</Grid>
+		</Border>
+	</Grid> 
+	
+</UserControl> 

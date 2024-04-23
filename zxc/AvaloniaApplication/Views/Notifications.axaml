@@ -1,0 +1,20 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication.Views.Notifications">
+
+	<Grid ColumnDefinitions="* 3* *">
+		<Border Grid.Column="1" Margin="0 12.5" Background="white" CornerRadius="30" BoxShadow="0 0 25 #7f000000">
+			<Grid>
+				<TextBlock FontSize="15" FontWeight="Bold" Margin="0 25" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Уведомления" TextDecorations="Underline"/>
+
+				<ScrollViewer VerticalScrollBarVisibility="Hidden">
+					<StackPanel Spacing="15"/>
+				</ScrollViewer>
+			</Grid>
+		</Border>
+	</Grid>
+
+</UserControl>

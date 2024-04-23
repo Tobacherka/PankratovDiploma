@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication.Views.User">
+
+	<Border Margin="12.5" Background="white" CornerRadius="30" BoxShadow="0 0 25 #7f000000">
+		<Grid x:Name="GridForUser" Margin="25" RowDefinitions="10* * * * * *" >
+			<Image Source="/Assets/photo.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+			
+			<Button x:Name="OrdersBtn" Grid.Row="1" Padding="0" Margin="0 5" FontSize="13" Background="Transparent" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+				<TextBlock Text="Заказы"/>
+			</Button>
+
+			<Button x:Name="SettingsBtn" Grid.Row="2" Padding="0" Margin="0 5" FontSize="13" Background="Transparent" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+				<TextBlock Text="Настройки"/>
+			</Button>
+
+			<Button x:Name="ProductsBtn" Grid.Row="3" Padding="0" Margin="0 5" FontSize="13" Background="Transparent" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+				<TextBlock Text="Товары"/>
+			</Button>
+			
+			<Button x:Name="UsersBtn" Grid.Row="4" Padding="0" Margin="0 5" FontSize="13" Background="Transparent" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+				<TextBlock Text="Пользователи"/>
+			</Button>
+			
+			<Button x:Name="LogOutBtn" Grid.Row="5" Padding="0" Margin="0 5" FontSize="13" Background="Transparent" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+				<TextBlock Text="Выход"/>
+			</Button>
+		</Grid>
+	</Border>
+	
+</UserControl>

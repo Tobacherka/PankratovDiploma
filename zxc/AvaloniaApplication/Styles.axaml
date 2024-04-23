@@ -1,0 +1,370 @@
+﻿
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+	<Design.PreviewWith>
+        <Border Padding="20"/>
+    </Design.PreviewWith>
+
+	
+	
+	<Style Selector="Button">
+		
+		<Style Selector="^:pointerover TextBlock">
+			<Setter Property="TextDecorations" Value="Underline"/>
+		</Style>
+
+		<Style Selector="^.orders:pointerover TextBlock">
+			<Setter Property="Text" Value="*дата*"/>
+		</Style>
+
+		<Style Selector="^:pointerover /template/ ContentPresenter">
+			<Setter Property="Border.Background" Value="Transparent"/>
+		</Style>
+
+		<Style Selector="^:disabled /template/ ContentPresenter">
+			<Setter Property="Border.Background" Value="#3f000000"/>
+			<Setter Property="TextBlock.Foreground" Value="#7f000000"/>
+		</Style>
+		
+		<Style Selector="^.white:pointerover /template/ ContentPresenter">
+			<Setter Property="Border.Background" Value="#bfff0000"/>
+			<Setter Property="TextBlock.Foreground" Value="#ffffff"/>
+		</Style>
+
+		<Style Selector="^.black:pointerover /template/ ContentPresenter">
+			<Setter Property="Border.Background" Value="#7fff0000"/>
+			<Setter Property="TextBlock.Foreground" Value="#bf000000"/>
+		</Style>		
+	</Style>
+
+
+
+	<Style Selector="TextBox">
+		<Setter Property="CaretBrush" Value="#000000"/>
+		<Setter Property="SelectionBrush" Value="#3f000000"/>
+		
+		<Style Selector="^ /template/ TextBlock#PART_Watermark">
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="Foreground" Value="#7f000000"/>
+		</Style>
+
+		<Style Selector="^:pointerover /template/ TextBlock#PART_Watermark">
+			<Setter Property="Foreground" Value="#7f000000"/>
+		</Style>
+
+		<Style Selector="^:focus /template/ TextBlock#PART_Watermark">
+			<Setter Property="Foreground" Value="#7f000000"/>
+		</Style>
+
+		<Style Selector="^.red:pointerover /template/ Border">
+			<Setter Property="BorderThickness" Value="1.5"/>
+			<Setter Property="BorderBrush" Value="#7fff0000"/>
+			<Setter Property="CornerRadius" Value="7"/>
+			<Setter Property="Padding" Value="-1.5"/>
+		</Style>
+
+		<Style Selector="^.red:focus /template/ Border">
+			<Setter Property="BorderThickness" Value="1.5"/>
+			<Setter Property="BorderBrush" Value="#7fff0000"/>
+			<Setter Property="CornerRadius" Value="7"/>
+			<Setter Property="Padding" Value="-1.5"/>
+		</Style>
+
+		<Style Selector="^.black:pointerover /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+		</Style>
+
+		<Style Selector="^.black:focus /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#000000"/>
+		</Style>
+
+		<Style Selector="^.black:disabled /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#000000"/>
+		</Style>
+
+		<Style Selector="^.black:disabled">
+			<Setter Property="Foreground" Value="#000000"/>
+		</Style>
+
+		<Style Selector="^.myReview:pointerover /template/ Border">
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Padding" Value="0"/>
+			<Setter Property="Background" Value="Transparent"/>
+		</Style>
+
+		<Style Selector="^.myReview:focus /template/ Border">
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Padding" Value="0"/>
+			<Setter Property="Background" Value="Transparent"/>
+		</Style>
+
+		<Style Selector="^.review /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#bfff0000"/>
+		</Style>
+
+		<Style Selector="^.review:pointerover /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#bfff0000"/>
+		</Style>
+
+		<Style Selector="^.review:focus /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#bfff0000"/>
+		</Style>
+
+		<Style Selector="^.review:disabled /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#000000"/>
+		</Style>
+		
+		<Style Selector="^.review:disabled">
+			<Setter Property="Foreground" Value="#000000"/>
+		</Style>
+		
+		<Style Selector="^.search:pointerover /template/ Border">
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Padding" Value="0"/>
+		</Style>
+
+		<Style Selector="^.search:focus /template/ Border">
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Padding" Value="0"/>
+		</Style>
+
+		<Style Selector="^.product">
+			<Setter Property="Padding" Value="5 2.5"/>
+		</Style>
+
+		<Style Selector="^.product /template/ Border">
+			<Setter Property="BorderBrush" Value="#5f000000"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="CornerRadius" Value="3"/>
+			<Setter Property="Padding" Value="-1"/>
+		</Style>
+
+		<Style Selector="^.product:pointerover /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#3f000000"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+			<Setter Property="CornerRadius" Value="3"/>
+			<Setter Property="Padding" Value="-1.5"/>
+		</Style>
+
+		<Style Selector="^.product:focus /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#3f000000"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+			<Setter Property="CornerRadius" Value="3"/>
+			<Setter Property="Padding" Value="-1.5"/>
+		</Style>
+
+		<Style Selector="^.product:disabled /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+		</Style>
+
+		<Style Selector="^.product:disabled">
+			<Setter Property="Foreground" Value="#000000"/>
+			<Setter Property="Padding" Value="0"/>
+		</Style>
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<Style Selector="^.characteristics">
+			<Setter Property="Padding" Value="5"/>
+		</Style>
+
+		<Style Selector="^.characteristics /template/ Border">
+			<Setter Property="BorderBrush" Value="#5f000000"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+			<Setter Property="CornerRadius" Value="3"/>
+			<Setter Property="Padding" Value="-1.5"/>
+		</Style>
+
+		<Style Selector="^.characteristics:pointerover /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#5f000000"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+			<Setter Property="CornerRadius" Value="3"/>
+			<Setter Property="Padding" Value="-1.5"/>
+		</Style>
+
+		<Style Selector="^.characteristics:focus /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#5f000000"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+			<Setter Property="CornerRadius" Value="3"/>
+			<Setter Property="Padding" Value="-1.5"/>
+		</Style>
+
+		<Style Selector="^.characteristics:disabled /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+		</Style>
+
+		<Style Selector="^.characteristics:disabled">
+			<Setter Property="Foreground" Value="#000000"/>
+			<Setter Property="Padding" Value="0"/>
+		</Style>
+	</Style>
+	
+	
+
+	<Style Selector="FlyoutPresenter">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Padding" Value="0"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="MinWidth" Value="0"/>
+		<Setter Property="MinHeight" Value="0"/>
+	</Style>
+
+
+	<Style Selector="ListBox">
+		
+		<Style Selector="^.catalog ListBoxItem">
+			<Setter Property="FontSize" Value="11"/>
+			<Setter Property="Padding" Value="0"/>
+			<Setter Property="Margin" Value="0 2.5"/>
+		</Style>
+
+		<Style Selector="^.catalog ListBoxItem:pointerover TextBlock">
+			<Setter Property="TextDecorations" Value="Underline"/>
+		</Style>
+
+		<Style Selector="^.cardproduct ListBoxItem">
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="FontWeight" Value="Medium"/>
+			<Setter Property="Padding" Value="0 5 0 0"/>
+		</Style>
+	</Style>
+
+	
+	
+	<Style Selector="ListBoxItem">
+		
+		<Style Selector="^:pointerover /template/ ContentPresenter">
+			<Setter Property="Background" Value="Transparent"/>
+		</Style>
+
+		<Style Selector="^:selected /template/ ContentPresenter">
+			<Setter Property="Background" Value="Transparent"/>
+		</Style>
+	</Style>
+
+
+
+	<Style Selector="RadioButton">
+		
+		<Style Selector="^:checked /template/ Ellipse#CheckOuterEllipse">
+			<Setter Property="Fill" Value="#bfff0000"/>
+			<Setter Property="Stroke" Value="#bfff0000"/>
+			<Setter Property="StrokeThickness" Value="1.5"/>
+		</Style>
+
+		<Style Selector="^:unchecked /template/ Ellipse#OuterEllipse">
+			<Setter Property="Stroke" Value="#bfff0000"/>
+			<Setter Property="StrokeThickness" Value="1.5"/>
+		</Style>
+
+		<Style Selector="^:pointerover /template/ Ellipse#OuterEllipse">
+			<Setter Property="Fill" Value="#3fff0000"/>
+			<Setter Property="Stroke" Value="#bfff0000"/>
+			<Setter Property="StrokeThickness" Value="1.5"/>
+		</Style>
+	</Style>
+
+	<Style Selector="ComboBox">
+		<Setter Property="Padding" Value="5 2.5"/>
+		
+		<Style Selector="^:disabled">
+			<Setter Property="Padding" Value="0"/>
+		</Style>
+		
+		<Style Selector="^:disabled /template/ ContentControl">
+			<Setter Property="Foreground" Value="#000000"/>
+		</Style>
+		
+		<Style Selector="^:disabled /template/ PathIcon">
+			<Setter Property="IsVisible" Value="False"/>
+		</Style>
+
+		<Style Selector="^:disabled /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+		</Style>
+
+		<Style Selector="^:pointerover /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#7f000000"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+		</Style>
+		
+		<Style Selector="^:pressed /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#7f000000"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+		</Style>
+
+		<Style Selector="^:dropdownopen /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="#7f000000"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+		</Style>
+
+		<Style Selector="^:dropdownopen /template/ Border#PopupBorder">
+			<Setter Property="Background" Value="#ffffff"/>
+			<Setter Property="BorderBrush" Value="#3f000000"/>
+			<Setter Property="BorderThickness" Value="1.5"/>
+			<Setter Property="Margin" Value="0 2.5 0 0"/>
+			<Setter Property="CornerRadius" Value="7"/>
+		</Style>
+
+		<Style Selector="^:dropdownopen /template/ Popup">
+			<Setter Property="Placement" Value="BottomEdgeAlignedLeft"/>
+		</Style>
+	</Style>
+
+	<Style Selector="ComboBoxItem">
+		<Setter Property="Foreground" Value="#000000"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Padding" Value="5 2.5"/>
+
+		<Style Selector="^:pointerover /template/ ContentPresenter">
+			<Setter Property="Foreground" Value="#000000"/>
+			<Setter Property="Background" Value="#3fff0000"/>
+		</Style>
+
+		<Style Selector="^:selected /template/ ContentPresenter">
+			<Setter Property="Foreground" Value="#000000"/>
+			<Setter Property="Background" Value="#7fff0000"/>
+		</Style>
+	</Style>
+
+	<Style Selector="MenuItem">
+		<Setter Property="Padding" Value="5 2.5"/>
+
+		<Style Selector="^ /template/ Border">
+			<Setter Property="Background" Value="Transparent"/>
+		</Style>
+
+		<Style Selector="^:pointerover /template/ Border">
+			<Setter Property="Background" Value="#3fff0000"/>
+		</Style>
+
+		<Style Selector="^:pressed /template/ Border">
+			<Setter Property="Background" Value="#7fff0000"/>
+		</Style>
+	</Style>
+
+</Styles>

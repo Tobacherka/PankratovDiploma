@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication.Views.Header">
+
+	<UserControl.Background>
+		<ImageBrush Source="/Assets/background.png" Opacity="0.075"/>
+	</UserControl.Background>
+
+	<Grid RowDefinitions="* 15*">
+		<Grid Grid.Row="0" ColumnDefinitions="auto * auto auto auto auto">
+			<Button x:Name="IconBtn" Grid.Column="0" Background="Transparent" Margin="5 5 0 0" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+				<Image Source="{SvgImage /Assets/logo.svg}"/>
+			</Button>
+
+			<Button x:Name="ProfileBtn" Grid.Column="5" Background="Transparent" Margin="7.5 22.5 15 0" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+				<Image Source="{SvgImage /Assets/user.svg}"/>
+			</Button>
+
+			<Button x:Name="CartBtn" Grid.Column="4" Background="Transparent" Margin="7.5 22.5 7.5 0" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+				<Image Source="{SvgImage /Assets/shopping bag.svg}"/>
+			</Button>
+
+			<Button x:Name="ChatBtn" Grid.Column="3" Background="Transparent" Margin="7.5 22.5 7.5 0" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+				<Image Source="{SvgImage /Assets/letter.svg}"/>
+			</Button>
+
+			<Button x:Name="NotificationsBtn" Grid.Column="2" Background="Transparent" Margin="0 22.5 7.5 0" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+				<Image Source="{SvgImage /Assets/notifications.svg}"/>
+			</Button>
+		</Grid>
+
+		<Grid x:Name="MainGrid" Grid.Row="1" Margin="15 25 15 15"/>	  
+	</Grid>
+	
+</UserControl>
