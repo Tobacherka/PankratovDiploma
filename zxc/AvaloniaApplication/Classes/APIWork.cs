@@ -14,7 +14,7 @@ namespace AvaloniaApplication.Classes
         /// <summary>
         /// Статичный метод запроса к API
         /// </summary>
-        public static async Task<List<string>> SendRequest(string command, string parameter = null, string parameter2 = null, string parameter3 = null, string parameter4 = null)
+        public static async Task<List<string>> SendRequest(string command, string? parameter = null, string? parameter2 = null, string? parameter3 = null, string? parameter4 = null)
         {
             List<string> Answer = new List<string>();
             try
@@ -22,7 +22,7 @@ namespace AvaloniaApplication.Classes
                 var httpClient = new HttpClient();
 
                 // Указываем адрес API
-                var uriBuilder = new UriBuilder(Connection.ConnectionDB.ToString());
+                var uriBuilder = Connection.ConnectionDB;
 
                 // Создаем строку запроса
                 var query = $"command={Uri.EscapeDataString(command)}";
