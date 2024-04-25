@@ -20,7 +20,7 @@ namespace AvaloniaApplication.Views
         {
             if (PasswordTextBox.Text != PasswordRepeatTextBox.Text)
             {
-                
+                ErrorText.Text = "Пароли не совпадают";
             }
             else
             {
