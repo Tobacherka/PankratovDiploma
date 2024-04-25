@@ -10,7 +10,7 @@ namespace AvaloniaApplication.Classes
     public static class GlobalBuffer
     {
         public static Grid _mainGrid;
-        public static string Name = null;
+        public static string? Name = null;
         public static string Role;
     }
 }
