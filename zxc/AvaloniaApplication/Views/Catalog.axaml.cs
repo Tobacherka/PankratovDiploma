@@ -1,6 +1,16 @@
 using Avalonia.Controls;
+using Avalonia.Media.Imaging;
 using AvaloniaApplication.Classes;
+using Newtonsoft.Json;
+using SkiaSharp;
+using System.Data.SqlTypes;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 //в лист боксах (категория и фильтр) должны лежать текст блоки (чтобы работала анимация при наведении)
 
@@ -17,21 +27,42 @@ namespace AvaloniaApplication.Views
             SearchBtn.Click += SearchBtn_Click;
         }
 
-        public void GeneredItems()
+        private async Task GeneredItems()
         {
-            for (int i = 0; i < 6; i++)
+            var file = await APIWork.SendRequest("SendMeAllProduct");
+
+            string json = await File.ReadAllTextAsync(file[0]);
+            DbData? data = JsonConvert.DeserializeObject<DbData>(json);
+
+            if (data == null)
+                return;
+
+            int column = 0, row = 0;
+            foreach (var product in data.Products)
             {
-                for (int j = 0; j < 6; j++)
+                if (column < 6)
                 {
-                    Product product = new Product();
-                    product.plus.IsVisible = false;
-                    product.minus.IsVisible = false;
-                    product.buttonCart.IsVisible = false;
-                    product.buttonOrders.IsVisible = false;
-                    product.menuOrders.IsVisible = false;
-                    Grid.SetRow(product, i);
-                    Grid.SetColumn(product, j);
-                    GridForCatalog.Children.Add(product);
+                    var productControl = new Product();
+                    productControl.name.Text = product.Name;
+                    productControl.price.Text = product.Price.ToString();
+                    productControl.category.SelectedValue = product.Category;
+                    productControl.image.Source = ImageConverter(product.image);
+
+                    productControl.plus.IsVisible = false;
+                    productControl.minus.IsVisible = false;
+                    productControl.buttonCart.IsVisible = false;
+                    productControl.buttonOrders.IsVisible = false;
+                    productControl.menuOrders.IsVisible = false;
+                    Grid.SetRow(productControl, row);
+                    Grid.SetColumn(productControl, column);
+                    GridForCatalog.Children.Add(productControl);
+
+                    column++;
+                }
+                else
+                {
+                    row++;
+                    column = 0;
                 }
             }
         }
@@ -40,6 +71,14 @@ namespace AvaloniaApplication.Views
         {
             SearchBtn.IsVisible = false;
             Search.IsVisible = true;
+        }
+
+        private Bitmap ImageConverter(byte[]? bytes)
+        {
+            if (bytes == null)
+                return new("D:\\учеба\\Диплом Панкратова\\Диплом\\Pankratov\\zxc\\AvaloniaApplication\\Assets\\photo.png");
+            using (MemoryStream stream = new MemoryStream(bytes))
+                return new(stream);
         }
     }
 }

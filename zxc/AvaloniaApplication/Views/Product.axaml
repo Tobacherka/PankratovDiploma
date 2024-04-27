@@ -22,7 +22,7 @@
 			</Border.ContextMenu>
 			
 			<Grid x:Name="grid" Margin="15" RowDefinitions="10* * * * *">
-				<Image Source="/Assets/photo.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+				<Image x:Name="image" Source="/Assets/photo.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
 				<ComboBox x:Name="category" Grid.Row="1" IsEnabled="False" MinHeight="0" CornerRadius="3" SelectedIndex="0" FontSize="9" Margin="0 2.5" Foreground="Black" Background="Transparent" BorderBrush="#7f000000" BorderThickness="1" VerticalAlignment="Center">
 					<ComboBoxItem>Категория 1</ComboBoxItem>
