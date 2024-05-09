@@ -3,6 +3,7 @@ using Avalonia.Media.Imaging;
 using AvaloniaApplication.Classes;
 using Newtonsoft.Json;
 using SkiaSharp;
+using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
@@ -27,22 +28,25 @@ namespace AvaloniaApplication.Views
             SearchBtn.Click += SearchBtn_Click;
         }
 
-        private async Task GeneredItems()
+        private async void GeneredItems()
         {
             var file = await APIWork.SendRequest("SendMeAllProduct");
-
             string json = await File.ReadAllTextAsync(file[0]);
-            DbData? data = JsonConvert.DeserializeObject<DbData>(json);
 
-            if (data == null)
+            GlobalBuffer.Products = JsonConvert.DeserializeObject<List<DbProduct>>(json);
+
+            var products = GlobalBuffer.Products;
+
+            if (products == null)
                 return;
 
             int column = 0, row = 0;
-            foreach (var product in data.Products)
+            foreach (var product in products)
             {
                 if (column < 6)
                 {
                     var productControl = new Product();
+                    productControl.Id = product.Id;
                     productControl.name.Text = product.Name;
                     productControl.price.Text = product.Price.ToString();
                     productControl.category.SelectedValue = product.Category;

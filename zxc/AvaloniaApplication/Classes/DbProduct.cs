@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Classes
 {
-    internal class DbProduct
+    public class DbProduct
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -1,14 +1,21 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using Avalonia.Styling;
+using AvaloniaApplication.Classes;
+using System.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace AvaloniaApplication.Views
 {
     public partial class CardProduct : UserControl
     {
-        public CardProduct()
+        public Product ProductControl { get; set; }
+        //public DbProduct? Product {  get; private set; }
+        public CardProduct(Product product)
         {
+            ProductControl = product;
+            //Product = GlobalBuffer.Products?.FirstOrDefault(x => x.Id == product.Id);
             InitializeComponent();
             GeneredItem();
             ChangeBtn1.Click += ChangeBtn1_Click;
@@ -36,15 +43,14 @@ namespace AvaloniaApplication.Views
         }
 
         public void GeneredItem()
-        {  
-            Product product = new Product();
-            product.plus.IsVisible = false;
-            product.minus.IsVisible = false;
-            product.buttonCart.IsVisible = false;
-            product.buttonOrders.IsVisible = false;
-            product.menuOrders.IsVisible = false;
-            product.border.CornerRadius = new Avalonia.CornerRadius(30);
-            product.border.BoxShadow = new BoxShadows(
+        {
+            ProductControl.plus.IsVisible = false;
+            ProductControl.minus.IsVisible = false;
+            ProductControl.buttonCart.IsVisible = false;
+            ProductControl.buttonOrders.IsVisible = false;
+            ProductControl.menuOrders.IsVisible = false;
+            ProductControl.border.CornerRadius = new Avalonia.CornerRadius(30);
+            ProductControl.border.BoxShadow = new BoxShadows(
                 new BoxShadow
                 {
                     OffsetX = 0,
@@ -55,18 +61,19 @@ namespace AvaloniaApplication.Views
 
                 }
             );
-            product.grid.Margin = new Thickness(25);
-            product.category.FontSize = 11;
-            product.name.FontSize = 13;
-            product.price.FontSize = 12;
-            product.button.CornerRadius = new Avalonia.CornerRadius(7);
-            product.button.Padding = new Thickness(10, 5);
-            product.button.FontSize = 13;
-            product.textblock.Text = "Добавить в корзину";
-            Grid.SetColumn(product, 0);
-            Grid.SetRow(product, 0);
-            Grid.SetRowSpan(product, 2);
-            GridForCardProduct.Children.Add(product);   
+            ProductControl.grid.Margin = new Thickness(25);
+            ProductControl.category.FontSize = 11;
+            ProductControl.name.FontSize = 13;
+            ProductControl.price.FontSize = 12;
+            ProductControl.button.CornerRadius = new Avalonia.CornerRadius(7);
+            ProductControl.button.Padding = new Thickness(10, 5);
+            ProductControl.button.FontSize = 13;
+            ProductControl.textblock.Text = "Добавить в корзину";
+            Grid.SetColumn(ProductControl, 0);
+            Grid.SetRow(ProductControl, 0);
+            Grid.SetRowSpan(ProductControl, 2);
+            GridForCardProduct.Children.Clear();
+            GridForCardProduct.Children.Add(ProductControl);   
         }
     }
 }

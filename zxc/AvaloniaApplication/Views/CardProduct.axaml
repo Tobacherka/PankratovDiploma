@@ -15,7 +15,7 @@
 			<Grid x:Name="GridForStackPanel" Margin="87.5 37.5" RowDefinitions="auto auto">
 				<StackPanel Grid.Row="0" Margin="0 0 0 25">
 					<TextBlock Text="Характеристики:" FontSize="15" FontWeight="Bold" TextDecorations="Underline"/>
-					<ListBox Classes="cardproduct" Background="Transparent" Margin="0 12.5 0 0" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+					<ListBox x:Name="lbCharacteristics" Classes="cardproduct" Background="Transparent" Margin="0 12.5 0 0" ScrollViewer.VerticalScrollBarVisibility="Hidden">
 						<ListBoxItem>
 							<TextBox Text="• text text text text text text text" IsEnabled="False" Classes="characteristics" MinHeight="0"  Background="Transparent" CornerRadius="3" BorderThickness="0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="13" FontWeight="Medium" Margin="0 5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 						</ListBoxItem>
