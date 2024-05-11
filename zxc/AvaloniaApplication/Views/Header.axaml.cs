@@ -1,5 +1,9 @@
 using Avalonia.Controls;
 using AvaloniaApplication.Classes;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Views
 {
@@ -17,6 +21,7 @@ namespace AvaloniaApplication.Views
             ProfileBtn.Click += ProfileBtn_Click;
             GlobalBuffer._mainGrid = MainGrid;
             Add();
+            //GlobalBuffer.Products = GetProducts().Result;
         }
 
         private void IconBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -84,9 +89,9 @@ namespace AvaloniaApplication.Views
             //ChatBtn.IsVisible = false;
             //NotificationsBtn.IsVisible = false;
 
-            //Catalog catalog = new Catalog();
-            //Grid.SetRow(catalog, 0);
-            //MainGrid.Children.Add(catalog);
+            Catalog catalog = new Catalog();
+            Grid.SetRow(catalog, 0);
+            MainGrid.Children.Add(catalog);
 
             //CardProduct cardproduct = new CardProduct();
             //Grid.SetRow(cardproduct, 0);
@@ -128,13 +133,23 @@ namespace AvaloniaApplication.Views
             //Grid.SetRow(products, 0);
             //MainGrid.Children.Add(products);
 
+            //Product product = new Product();
+            //Grid.SetRow(product, 0);
+            //MainGrid.Children.Add(product);
+
             //Users users = new Users();
             //Grid.SetRow(users, 0);
             //MainGrid.Children.Add(users);
 
-            SettingUsers settingUsers = new SettingUsers();
-            Grid.SetRow(settingUsers, 0);
-            MainGrid.Children.Add(settingUsers);
+            //SettingUsers settingUsers = new SettingUsers();
+            //Grid.SetRow(settingUsers, 0);
+            //MainGrid.Children.Add(settingUsers);
+        }
+        private async Task<List<DbProduct>?> GetProducts()
+        {
+            var file = await APIWork.SendRequest("SendMeAllProduct");
+            string json = await File.ReadAllTextAsync(file[0]);
+            return JsonConvert.DeserializeObject<List<DbProduct>>(json);
         }
     }
 }
