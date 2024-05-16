@@ -12,6 +12,7 @@ namespace AvaloniaApplication.Classes
         public static Grid _mainGrid;
         public static string? Name = null;
         public static string Role;
+        public static int CurrentUserID = -1;
         internal static List<DbProduct>? Products {  get; set; }
     }
 }

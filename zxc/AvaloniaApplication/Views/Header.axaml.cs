@@ -33,33 +33,33 @@ namespace AvaloniaApplication.Views
 
         private void ProfileBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            if (GlobalBuffer.Name != null)
+            if (GlobalBuffer.Name == null)
             {
-                Profile profile = new Profile();
                 GlobalBuffer._mainGrid.Children.Clear();
-                GlobalBuffer._mainGrid.Children.Add(profile);
+                Authorization authorization = new Authorization(typeof(Profile));
+                GlobalBuffer._mainGrid.Children.Add(authorization);
             }
             else
             {
-                Authorization authorization = new Authorization();
                 GlobalBuffer._mainGrid.Children.Clear();
-                GlobalBuffer._mainGrid.Children.Add(authorization);
+                Profile profile = new Profile();
+                GlobalBuffer._mainGrid.Children.Add(profile);
             }
         }
 
         private void CartBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            if (GlobalBuffer.Name != null)
+            if (GlobalBuffer.Name == null)
             {
-                Cart basket = new Cart();
                 GlobalBuffer._mainGrid.Children.Clear();
-                GlobalBuffer._mainGrid.Children.Add(basket);
+                Authorization authorization = new Authorization(typeof(Cart));
+                GlobalBuffer._mainGrid.Children.Add(authorization);
             }
             else
             {
-                Authorization authorization = new Authorization();
                 GlobalBuffer._mainGrid.Children.Clear();
-                GlobalBuffer._mainGrid.Children.Add(authorization);
+                Cart basket = new Cart();
+                GlobalBuffer._mainGrid.Children.Add(basket);
             }
         }
 

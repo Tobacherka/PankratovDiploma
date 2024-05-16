@@ -14,7 +14,7 @@ namespace AvaloniaApplication.Views
         //public DbProduct? Product {  get; private set; }
         public CardProduct(Product product)
         {
-            ProductControl = product;
+            ProductControl = new(product);
             //Product = GlobalBuffer.Products?.FirstOrDefault(x => x.Id == product.Id);
             InitializeComponent();
             GeneredItem();
@@ -44,9 +44,9 @@ namespace AvaloniaApplication.Views
 
         public void GeneredItem()
         {
-            ProductControl.plus.IsVisible = false;
-            ProductControl.minus.IsVisible = false;
-            ProductControl.buttonCart.IsVisible = false;
+            //ProductControl.plus.IsVisible = false;
+            //ProductControl.minus.IsVisible = false;
+            //ProductControl.buttonCart.IsVisible = false;
             ProductControl.buttonOrders.IsVisible = false;
             ProductControl.menuOrders.IsVisible = false;
             ProductControl.border.CornerRadius = new Avalonia.CornerRadius(30);

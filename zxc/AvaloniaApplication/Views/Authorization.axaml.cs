@@ -1,5 +1,7 @@
 using Avalonia.Controls;
 using AvaloniaApplication.Classes;
+using DynamicData;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,9 +9,13 @@ namespace AvaloniaApplication.Views
 {
     public partial class Authorization : UserControl
     {
-        public Authorization()
+        public Type Type { get; set; }
+        public object? parametr;
+        public Authorization(Type type, object? parametr = null)
         {
             InitializeComponent();
+            Type = type;
+            this.parametr = parametr;
             SingUpBtn.Click += SingUpBtn_Click;
             LogInBtn.Click += LogInBtn_Click;
         }
@@ -22,16 +28,20 @@ namespace AvaloniaApplication.Views
             }
         }
 
-        private async Task CheckDataForAutorizaion()
+        private async void CheckDataForAutorizaion()
         {
             var responseArray = await APIWork.SendRequest("Authorization", LoginText.Text, PasswordText.Text);
             
             if (responseArray != null && responseArray.Any())
             {
-                Profile profile = new Profile();
                 GlobalBuffer._mainGrid.Children.Clear();
-                GlobalBuffer._mainGrid.Children.Add(profile);
+                GlobalBuffer.CurrentUserID = int.Parse(responseArray[0]);
                 GlobalBuffer.Name = "sad";
+                if (parametr != null)
+                    GlobalBuffer._mainGrid.Children.Add((UserControl)Activator.CreateInstance(Type, parametr));
+                else
+                    GlobalBuffer._mainGrid.Children.Add((UserControl)Activator.CreateInstance(Type));
+                GlobalBuffer._mainGrid.Children.Remove(this);
             }
             else
             {
@@ -41,7 +51,7 @@ namespace AvaloniaApplication.Views
 
         private void SingUpBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            Registration registration = new Registration();
+            Registration registration = new Registration(Type);
             GlobalBuffer._mainGrid.Children.Clear();
             GlobalBuffer._mainGrid.Children.Add(registration);
         }

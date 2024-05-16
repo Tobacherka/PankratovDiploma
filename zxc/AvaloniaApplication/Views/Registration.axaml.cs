@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using AvaloniaApplication.Classes;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,13 +8,15 @@ namespace AvaloniaApplication.Views
 {
     public partial class Registration : UserControl
     {
-        public Registration()
+        private Type _type;
+        public Registration(Type type)
         {
             InitializeComponent();
             LogInBtn.Click += LogInBtn_Click;
             RegistrationBtn.IsEnabled = false;
             TextBoxChanging();
             RegistrationBtn.Click += RegistrationBtn_Click;
+            _type = type;
         }
 
         private void RegistrationBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -37,9 +40,9 @@ namespace AvaloniaApplication.Views
 
             if (responseArray != null && responseArray.Any())
             {
-                Profile profile = new Profile();
                 GlobalBuffer._mainGrid.Children.Clear();
-                GlobalBuffer._mainGrid.Children.Add(profile);
+                GlobalBuffer._mainGrid.Children.Add((UserControl)Activator.CreateInstance(_type));
+                GlobalBuffer.CurrentUserID = int.Parse(responseArray[0]);
                 GlobalBuffer.Name = NameTextBox.Text;
             }
             else
@@ -55,7 +58,7 @@ namespace AvaloniaApplication.Views
 
         private void LogInBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            Authorization authorization = new Authorization();
+            Authorization authorization = new Authorization(_type);
             GlobalBuffer._mainGrid.Children.Clear();
             GlobalBuffer._mainGrid.Children.Add(authorization);
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,7 @@ namespace AvaloniaApplication.Classes
 {
     public static class APIWork
     {
+        private static readonly HttpClient _httpClient = new();
         /// <summary>
         /// Статичный метод запроса к API
         /// </summary>
@@ -19,8 +21,6 @@ namespace AvaloniaApplication.Classes
             List<string> Answer = new List<string>();
             try
             {
-                var httpClient = new HttpClient();
-
                 // Указываем адрес API
                 var uriBuilder = Connection.ConnectionDB;
 
@@ -44,7 +44,7 @@ namespace AvaloniaApplication.Classes
                 request.Headers.Add("accept", "*/*");
 
                 // Отправляем запрос и получаем ответ
-                var response = await httpClient.SendAsync(request);
+                var response = await _httpClient.SendAsync(request);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -63,6 +63,26 @@ namespace AvaloniaApplication.Classes
                 Debug.WriteLine("An error occurred: " + ex.Message);
                 return null;
             }
+        }
+
+        public static async Task<List<DbOrderDetail>?> GetProductsInCart()
+        {
+            //var uriBuilder = new UriBuilder("https://localhost:7250/Command/cart");
+            //var query = $"userID = {GlobalBuffer.CurrentUserID}";
+            //var request = new HttpRequestMessage(HttpMethod.Get, uriBuilder.Uri);
+            //uriBuilder.Query = query;
+            //var response = await _httpClient.SendAsync(request);
+            //return GetFromJsonAsync<List<DbOrderDetail>?>response.Content;
+            try
+            {
+                var response = await _httpClient.GetFromJsonAsync<List<DbOrderDetail>?>($"https://localhost:7250/Command/cart?userID={GlobalBuffer.CurrentUserID}");
+                return response;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
     }
 }

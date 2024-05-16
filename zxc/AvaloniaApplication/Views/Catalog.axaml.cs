@@ -45,7 +45,7 @@ namespace AvaloniaApplication.Views
             {
                 if (column < 6)
                 {
-                    var productControl = new Product();
+                    var productControl = new Product(true);
                     productControl.Id = product.Id;
                     productControl.name.Text = product.Name;
                     productControl.price.Text = product.Price.ToString();
