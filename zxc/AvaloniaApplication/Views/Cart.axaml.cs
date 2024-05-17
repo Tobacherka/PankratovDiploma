@@ -4,6 +4,7 @@ using Avalonia.Media.Imaging;
 using AvaloniaApplication.Classes;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Views
 {
@@ -13,13 +14,13 @@ namespace AvaloniaApplication.Views
         {
             InitializeComponent();
             GeneredItems();
-            //SetTotalCost();
+            SetTotalCost();
         }
 
-        public async void GeneredItems()
+        public async Task GeneredItems()
         {
             var orderDetails = await APIWork.GetProductsInCart();
-
+            GridForCart.Children.Clear();
             if (orderDetails != null)
             {
                 int column = 0, row = 0;
@@ -39,6 +40,7 @@ namespace AvaloniaApplication.Views
                         productControl.category.Text = dbProduct.Category;
                         productControl.image.Source = ImageConverter(dbProduct.image);
                         productControl.CountInOrder = orderDetail.Quantity;
+                        productControl.CurrentCart = this;
                         productControl.buttonCart.Content = $"             {productControl.CountInOrder}             ";
                         //productControl.plus.Click += ProductPlusButton_Click;
                         //productControl.minus.Click += ProductPlusButton_Click;
@@ -97,20 +99,62 @@ namespace AvaloniaApplication.Views
             }
         }
 
-        //private async void SetTotalCost()
-        //{
-        //    decimal? totalCost;
-        //    try
-        //    {
-        //        var response = await APIWork.GetUserCart();
-        //        totalCost = response.TotalCost;
-        //    }
-        //    catch
-        //    {
-        //        totalCost = 0.00m;
-        //    }
-        //    tbTotalCost.Text = $"Общая сумма: {totalCost}";
-        //}
+        private async void SetTotalCost()
+        {
+            decimal? totalCost;
+            try
+            {
+                var response = await APIWork.GetUserCart();
+                totalCost = response.TotalCost;
+            }
+            catch
+            {
+                totalCost = 0.00m;
+            }
+            tbTotalCost.Text = $"Общая сумма: {(totalCost == null ? 0.00m : totalCost)}";
+        }
+
+        public void Refresh()
+        {
+            var orderDetails = APIWork.GetProductsInCart().Result;
+            GridForCart.Children.Clear();
+            if (orderDetails != null)
+            {
+                int column = 0, row = 0;
+                foreach (var orderDetail in orderDetails)
+                {
+                    if (column < 6)
+                    {
+                        var dbProduct = GlobalBuffer.Products.Where(x => x.Id == orderDetail.ProductID).FirstOrDefault();
+
+                        var productControl = new Product();
+                        productControl.button.IsVisible = false;
+                        productControl.menuOrders.IsVisible = false;
+                        productControl.buttonOrders.IsVisible = false;
+                        productControl.Id = dbProduct.Id;
+                        productControl.name.Text = dbProduct.Name;
+                        productControl.price.Text = orderDetail.Price.ToString();
+                        productControl.category.Text = dbProduct.Category;
+                        productControl.image.Source = ImageConverter(dbProduct.image);
+                        productControl.CountInOrder = orderDetail.Quantity;
+                        productControl.CurrentCart = this;
+                        productControl.buttonCart.Content = $"             {productControl.CountInOrder}             ";
+                        //productControl.plus.Click += ProductPlusButton_Click;
+                        //productControl.minus.Click += ProductPlusButton_Click;
+                        Grid.SetRow(productControl, row);
+                        Grid.SetColumn(productControl, column);
+                        GridForCart.Children.Add(productControl);
+
+                        column++;
+                    }
+                    else
+                    {
+                        row++;
+                        column = 0;
+                    }
+                }
+            }
+        }
 
         //private void ProductPlusButton_Click(object? sender, RoutedEventArgs e) 
         //{

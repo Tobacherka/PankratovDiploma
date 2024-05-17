@@ -14,6 +14,7 @@ namespace AvaloniaApplication.Views
     {
         public int Id { get; set; }
         public int CountInOrder { get; set; }
+        public Cart? CurrentCart;
 
         public Product()
         {
@@ -68,10 +69,10 @@ namespace AvaloniaApplication.Views
             buttonCart.Content = $"             {CountInOrder}             ";
         }
 
-        private void MinusButton_Click(object? sender, RoutedEventArgs args)
+        private async void MinusButton_Click(object? sender, RoutedEventArgs args)
         {
             CountInOrder--;
-            AddToCart(false);
+            await AddToCart(false);
 
             if (CountInOrder > 0) 
             {
@@ -79,13 +80,20 @@ namespace AvaloniaApplication.Views
                 return;
             }
 
-            button.IsVisible = true;
-            plus.IsVisible = false;
-            minus.IsVisible = false;
-            buttonCart.IsVisible = false;
+            if (CurrentCart != null) 
+            {
+                await CurrentCart.GeneredItems();
+            }
+            else
+            {
+                button.IsVisible = true;
+                plus.IsVisible = false;
+                minus.IsVisible = false;
+                buttonCart.IsVisible = false;
+            }
         }
 
-        public async void AddToCart(bool isNew)
+        public async Task AddToCart(bool isNew)
         {
             if (isNew)
                 await APIWork.SendRequest("AddProductToCart", GlobalBuffer.CurrentUserID.ToString(), Id.ToString());
@@ -96,11 +104,12 @@ namespace AvaloniaApplication.Views
                 decimal? totalCost;
                 var response = await APIWork.GetUserCart();
                 totalCost = response.TotalCost;
-                GlobalBuffer.currentCartTotalCost = $"Общая сумма: {totalCost}";
+                if (CurrentCart != null)
+                    CurrentCart.tbTotalCost.Text = $"Общая сумма: {(totalCost == null ? 0.00m : totalCost)}";
             }
             catch
             {
-                GlobalBuffer.currentCartTotalCost = string.Empty;
+               // CurrentCart.tbTotalCost.Text = string.Empty;
             }
         }
 
