@@ -11,6 +11,10 @@ namespace AvaloniaApplication.Views
     {
         public Type Type { get; set; }
         public object? parametr;
+        public Authorization()
+        {
+            InitializeComponent();
+        }
         public Authorization(Type type, object? parametr = null)
         {
             InitializeComponent();

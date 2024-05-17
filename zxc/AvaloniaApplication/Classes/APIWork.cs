@@ -75,14 +75,39 @@ namespace AvaloniaApplication.Classes
             //return GetFromJsonAsync<List<DbOrderDetail>?>response.Content;
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<List<DbOrderDetail>?>($"https://localhost:7250/Command/cart?userID={GlobalBuffer.CurrentUserID}");
+                var response = await _httpClient.GetFromJsonAsync<List<DbOrderDetail>?>($"https://localhost:7250/Command/cart/products-in-cart?userID={GlobalBuffer.CurrentUserID}");
                 return response;
             }
             catch
             {
                 return null;
             }
+        }
 
+        public static async Task<DbOrder?> GetUserCart()
+        {
+            try
+            {
+                var response = await _httpClient.GetFromJsonAsync<DbOrder?>($"https://localhost:7250/Command/cart?userID={GlobalBuffer.CurrentUserID}");
+                return response;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static async Task<List<DbProduct>?> GetProducts()
+        {
+            try
+            {
+                var response = await _httpClient.GetFromJsonAsync<List<DbProduct>?>($"https://localhost:7250/Command/products");
+                return response;
+            }
+            catch 
+            {
+                return null;
+            }
         }
     }
 }

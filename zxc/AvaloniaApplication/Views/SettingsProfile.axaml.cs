@@ -20,21 +20,21 @@ namespace AvaloniaApplication.Views
             //GridForSettingProfile.Children.Add(user);
 
             //для дефолт пользователя
-            //User user = new User();
-            //user.ProductsBtn.IsVisible = false;
-            //user.UsersBtn.IsVisible = false;
-            //user.GridForUser.RowDefinitions = new RowDefinitions
-            //{
-            //  new RowDefinition { Height = new GridLength(10, GridUnitType.Star) },
-            //  new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
-            //  new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
-            //  new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }
-            //};
-            //user.LogOutBtn.SetValue(Grid.RowProperty, 3);
-            //Grid.SetColumn(user, 0);
-            //Grid.SetRow(user, 0);
-            //Grid.SetRowSpan(user, 4);
-            //GridForSettingProfile.Children.Add(user);
+            User user = new User();
+            user.ProductsBtn.IsVisible = false;
+            user.UsersBtn.IsVisible = false;
+            user.GridForUser.RowDefinitions = new RowDefinitions
+            {
+              new RowDefinition { Height = new GridLength(10, GridUnitType.Star) },
+              new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+              new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+              new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }
+            };
+            user.LogOutBtn.SetValue(Grid.RowProperty, 3);
+            Grid.SetColumn(user, 0);
+            Grid.SetRow(user, 0);
+            Grid.SetRowSpan(user, 4);
+            GridForSettingProfile.Children.Add(user);
         }
     }
 }

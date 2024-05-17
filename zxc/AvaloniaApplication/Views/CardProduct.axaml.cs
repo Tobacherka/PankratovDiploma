@@ -12,6 +12,10 @@ namespace AvaloniaApplication.Views
     {
         public Product ProductControl { get; set; }
         //public DbProduct? Product {  get; private set; }
+        public CardProduct()
+        {
+            InitializeComponent();
+        }
         public CardProduct(Product product)
         {
             ProductControl = new(product);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,10 @@ namespace AvaloniaApplication.Classes
 {
     public class DbOrder
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public DateOnly Date {  get; set; }
+        public int UserID { get; set; }
+        public int OrderID { get; set; }
+        public DateTime Date { get; set; }
         public string? Status { get; set; }
+        public decimal? TotalCost { get; set; }
     }
 }

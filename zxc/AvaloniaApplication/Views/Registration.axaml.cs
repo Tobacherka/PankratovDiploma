@@ -9,6 +9,10 @@ namespace AvaloniaApplication.Views
     public partial class Registration : UserControl
     {
         private Type _type;
+        public Registration()
+        {
+            InitializeComponent();
+        }
         public Registration(Type type)
         {
             InitializeComponent();

@@ -91,6 +91,17 @@ namespace AvaloniaApplication.Views
                 await APIWork.SendRequest("AddProductToCart", GlobalBuffer.CurrentUserID.ToString(), Id.ToString());
             else
                 await APIWork.SendRequest("AddProductToCart", GlobalBuffer.CurrentUserID.ToString(), Id.ToString(), CountInOrder.ToString());
+            try
+            {
+                decimal? totalCost;
+                var response = await APIWork.GetUserCart();
+                totalCost = response.TotalCost;
+                GlobalBuffer.currentCartTotalCost = $"Общая сумма: {totalCost}";
+            }
+            catch
+            {
+                GlobalBuffer.currentCartTotalCost = string.Empty;
+            }
         }
 
         //public async Task<DbOrderDetail?>? GetOrderDetail()

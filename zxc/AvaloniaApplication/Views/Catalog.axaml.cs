@@ -1,8 +1,12 @@
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using AvaloniaApplication.Classes;
 using Newtonsoft.Json;
 using SkiaSharp;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.IO;
@@ -30,10 +34,11 @@ namespace AvaloniaApplication.Views
 
         private async void GeneredItems()
         {
-            var file = await APIWork.SendRequest("SendMeAllProduct");
-            string json = await File.ReadAllTextAsync(file[0]);
+            //var file = await APIWork.SendRequest("SendMeAllProduct");
+            //string json = await File.ReadAllTextAsync(file[0]);
 
-            GlobalBuffer.Products = JsonConvert.DeserializeObject<List<DbProduct>>(json);
+            //GlobalBuffer.Products = JsonConvert.DeserializeObject<List<DbProduct>>(json);
+            GlobalBuffer.Products = await APIWork.GetProducts();
 
             var products = GlobalBuffer.Products;
 
@@ -79,8 +84,51 @@ namespace AvaloniaApplication.Views
 
         private Bitmap ImageConverter(byte[]? bytes)
         {
+            //try
+            //{
+            //    if (bytes == null)
+            //    {
+            //        string filePath = "Assets\\photo.png";
+
+            //        // Ensure the file exists
+            //        if (!File.Exists(filePath))
+            //        {
+            //            throw new FileNotFoundException("The specified file was not found.", filePath);
+            //        }
+
+            //        // Load the bitmap
+            //        return new Bitmap(filePath);
+            //    }
+            //    using (MemoryStream stream = new MemoryStream(bytes))
+            //        return new(stream);
+            //}
+            //catch (FileNotFoundException ex)
+            //{
+            //    Console.WriteLine($"File not found: {ex.Message}");
+            //    // Handle the error or return a default image
+            //    return null;
+            //}
+            //catch (UnauthorizedAccessException ex)
+            //{
+            //    Console.WriteLine($"Access denied: {ex.Message}");
+            //    // Handle the error or return a default image
+            //    return null;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"An error occurred: {ex.Message}");
+            //    // Handle the error or return a default image
+            //    return null;
+            //}
             if (bytes == null)
-                return new("D:\\учеба\\Диплом Панкратова\\Диплом\\Pankratov\\zxc\\AvaloniaApplication\\Assets\\photo.png");
+            {
+                var uri = new Uri("avares://AvaloniaApplication/Assets/photo.png");
+                using (var stream = AssetLoader.Open(uri))
+                {
+                    var bitmap = new Bitmap(stream);
+                    return bitmap;
+                }
+            }
             using (MemoryStream stream = new MemoryStream(bytes))
                 return new(stream);
         }

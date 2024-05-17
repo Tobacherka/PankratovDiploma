@@ -14,7 +14,7 @@
 				<TextBlock Text="Очистить корзину"/>
 			</Button>
 
-			<TextBlock Grid.Row="1" Text="Общая сумма:" Margin="0 0 12.5 12.5" FontSize="15" Foreground="#000000" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+			<TextBlock Grid.Row="1" x:Name="tbTotalCost" Text="Общая сумма:" Margin="0 0 12.5 12.5" FontSize="15" Foreground="#000000" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 			<Button Classes="white" Grid.Row="2" CornerRadius="7" Padding=" 15 7.5" Margin="0 0 12.5 12.5" Background="#bfff0000" FontSize="15" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center">
 				<TextBlock Text="Оформить заказ"/>
 			</Button>

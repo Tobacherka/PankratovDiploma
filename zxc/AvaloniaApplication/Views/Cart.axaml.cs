@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
 using AvaloniaApplication.Classes;
 using System.IO;
@@ -12,6 +13,7 @@ namespace AvaloniaApplication.Views
         {
             InitializeComponent();
             GeneredItems();
+            //SetTotalCost();
         }
 
         public async void GeneredItems()
@@ -27,20 +29,22 @@ namespace AvaloniaApplication.Views
                     {
                         var dbProduct = GlobalBuffer.Products.Where(x => x.Id == orderDetail.ProductID).FirstOrDefault();
 
-                        Product currentProduct = new Product();
-                        currentProduct.button.IsVisible = false;
-                        currentProduct.menuOrders.IsVisible = false;
-                        currentProduct.buttonOrders.IsVisible = false;
-                        currentProduct.Id = dbProduct.Id;
-                        currentProduct.name.Text = dbProduct.Name;
-                        currentProduct.price.Text = dbProduct.Price.ToString();
-                        currentProduct.category.Text = dbProduct.Category;
-                        currentProduct.image.Source = ImageConverter(dbProduct.image);
-                        currentProduct.CountInOrder = orderDetail.Quantity;
-                        currentProduct.buttonCart.Content = $"             {currentProduct.CountInOrder}             ";
-                        Grid.SetRow(currentProduct, row);
-                        Grid.SetColumn(currentProduct, column);
-                        GridForCart.Children.Add(currentProduct);
+                        var productControl = new Product();
+                        productControl.button.IsVisible = false;
+                        productControl.menuOrders.IsVisible = false;
+                        productControl.buttonOrders.IsVisible = false;
+                        productControl.Id = dbProduct.Id;
+                        productControl.name.Text = dbProduct.Name;
+                        productControl.price.Text = orderDetail.Price.ToString();
+                        productControl.category.Text = dbProduct.Category;
+                        productControl.image.Source = ImageConverter(dbProduct.image);
+                        productControl.CountInOrder = orderDetail.Quantity;
+                        productControl.buttonCart.Content = $"             {productControl.CountInOrder}             ";
+                        //productControl.plus.Click += ProductPlusButton_Click;
+                        //productControl.minus.Click += ProductPlusButton_Click;
+                        Grid.SetRow(productControl, row);
+                        Grid.SetColumn(productControl, column);
+                        GridForCart.Children.Add(productControl);
 
                         column++;
                     }
@@ -71,5 +75,46 @@ namespace AvaloniaApplication.Views
             using (MemoryStream stream = new MemoryStream(bytes))
                 return new(stream);
         }
+
+        private void BtnEmpltyTheTrash_Click(object? sender, RoutedEventArgs e)
+        {
+            if (GlobalBuffer.CurrentUserID > -1)
+            {
+                EmptyTheTrash();
+                //SetTotalCost();
+            }
+        }
+
+        private async void EmptyTheTrash()
+        {
+            try
+            {
+                await APIWork.SendRequest("EmptyTheTrash");
+            }
+            catch
+            {
+                
+            }
+        }
+
+        //private async void SetTotalCost()
+        //{
+        //    decimal? totalCost;
+        //    try
+        //    {
+        //        var response = await APIWork.GetUserCart();
+        //        totalCost = response.TotalCost;
+        //    }
+        //    catch
+        //    {
+        //        totalCost = 0.00m;
+        //    }
+        //    tbTotalCost.Text = $"Общая сумма: {totalCost}";
+        //}
+
+        //private void ProductPlusButton_Click(object? sender, RoutedEventArgs e) 
+        //{
+        //    SetTotalCost();
+        //}
     }
 }
