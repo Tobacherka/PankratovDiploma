@@ -10,14 +10,15 @@
 			<Grid x:Name="GridForCart" Margin="12.5 0" RowDefinitions="* * * * * *" ColumnDefinitions="* * * * * *"/>
 		</ScrollViewer>
 			
-		<Button Classes="white" Grid.Row="2" CornerRadius="7" Padding="15 7.5" Margin="12.5 0 0 12.5" Background="#bfff0000" FontSize="15" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center">
+		<Button x:Name="btnEmptyTheTrash" Classes="white" Grid.Row="2" CornerRadius="7" Padding="15 7.5" Margin="12.5 0 0 12.5" Background="#bfff0000" FontSize="15" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center">
 				<TextBlock Text="Очистить корзину"/>
-			</Button>
+		</Button>
 
-			<TextBlock Grid.Row="1" x:Name="tbTotalCost" Text="Общая сумма:" Margin="0 0 12.5 12.5" FontSize="15" Foreground="#000000" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-			<Button Classes="white" Grid.Row="2" CornerRadius="7" Padding=" 15 7.5" Margin="0 0 12.5 12.5" Background="#bfff0000" FontSize="15" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center">
-				<TextBlock Text="Оформить заказ"/>
-			</Button>
+		<TextBlock Grid.Row="1" x:Name="tbTotalCost" Text="Общая сумма:" Margin="0 0 12.5 12.5" FontSize="15" Foreground="#000000" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		
+		<Button x:Name="btnPlaceAnOrder" Classes="white" Grid.Row="2" CornerRadius="7" Padding=" 15 7.5" Margin="0 0 12.5 12.5" Background="#bfff0000" FontSize="15" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center">
+			<TextBlock Text="Оформить заказ"/>
+		</Button>
 	</Grid>
 	
 </UserControl>

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace AvaloniaApplication.Classes
         /// <summary>
         /// Статичный метод запроса к API
         /// </summary>
-        public static async Task<List<string>> SendRequest(string command, string? parameter = null, string? parameter2 = null, string? parameter3 = null, string? parameter4 = null)
+        public static async Task<List<string>> SendRequest(string command, string? parameter = null, string? parameter2 = null, string? parameter3 = null, string? parameter4 = null, string? parameter5 = null, string? parameter6 = null, string? parameter7 = null)
         {
             List<string> Answer = new List<string>();
             try
@@ -36,6 +37,12 @@ namespace AvaloniaApplication.Classes
                     query += $"&parameter3={Uri.EscapeDataString(parameter3)}";
                 if (parameter4 != null)
                     query += $"&parameter4={Uri.EscapeDataString(parameter4)}";
+                if (parameter5 != null)
+                    query += $"&parameter5={Uri.EscapeDataString(parameter5)}";
+                if (parameter6 != null)
+                    query += $"&parameter6={Uri.EscapeDataString(parameter6)}";
+                if (parameter7 != null)
+                    query += $"&parameter7={Uri.EscapeDataString(parameter7)}";
 
                 uriBuilder.Query = query;
 

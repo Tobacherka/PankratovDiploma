@@ -14,5 +14,9 @@ namespace AvaloniaApplication.Classes
         public DateTime Date { get; set; }
         public string? Status { get; set; }
         public decimal? TotalCost { get; set; }
+        public string? DeliveryMethod { get; set; }
+        public string? UserFullName { get; set; }
+        public string? UserPhone { get; set; }
+        public string? UserEmail { get; set; }
     }
 }

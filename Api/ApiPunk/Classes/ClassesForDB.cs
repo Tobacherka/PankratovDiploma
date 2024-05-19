@@ -67,6 +67,12 @@ namespace ApiPunk.Classes
         public DateTime Date { get; set; }
         public string? Status { get; set; }
         public decimal? TotalCost { get; set; }
+        public string? DeliveryMethod { get; set; }
+        public string? UserFullName { get; set; }
+        public string? UserPhone { get; set; }
+        public string? UserEmail { get; set; }
+        public string? PaymentMethod { get; set; }
+        public string? Address { get; set; }
     }
 
     [Table("OrderDetails", Schema = "Shop")]

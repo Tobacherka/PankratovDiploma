@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
              x:Class="AvaloniaApplication.Views.PlacingAnOrder">
 
 	<Grid RowDefinitions="* auto" ColumnDefinitions="* * *">
@@ -12,34 +12,34 @@
 					<TextBlock FontSize="15" FontWeight="Bold" Text="Данные покупателя:" TextDecorations="Underline"/>
 
 					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="ФИО:"/>
-					<TextBox Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center"/>
+					<TextBox x:Name="tbFullName" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center"/>
 
 					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Номер телефона:"/>
-					<TextBox Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center"/>
+					<TextBox x:Name="tbPhone" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center"/>
 
 					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Электронная почта:"/>
-					<TextBox Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center"/>
+					<TextBox x:Name="tbEmail" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center"/>
 
 					<TextBlock Margin="0 17.5 0 0" FontSize="15" FontWeight="Bold" Text="Способ доставки:" TextDecorations="Underline"/>
 
-					<RadioButton FontSize="13" GroupName="Delivery" Margin="0 7.5 0 0" Content="Самовывоз"/>
-					<RadioButton FontSize="13" GroupName="Delivery" Margin="0 -10 0 0"  Content="Доставка"/>
+					<RadioButton FontSize="13" GroupName="Delivery" Margin="0 7.5 0 0" Content="Самовывоз" Checked="RbDelivery_Checked"/>
+					<RadioButton FontSize="13" GroupName="Delivery" Margin="0 -10 0 0"  Content="Доставка" Checked="RbDelivery_Checked"/>
 				
 					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Адрес:"/>
-					<TextBox Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" Watermark="Регион"/>
-					<TextBox Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" Watermark="Город"/>
-					<TextBox Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" Watermark="Улица, дом, квартира"/>
-					<TextBox Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" Watermark="Почтовый индекс"/>
+					<TextBox x:Name="tbRegion" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" Watermark="Регион"/>
+					<TextBox x:Name="tbCity" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" Watermark="Город"/>
+					<TextBox x:Name="tbStreetHouseApartament" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" Watermark="Улица, дом, квартира"/>
+					<TextBox x:Name="tbPostalCode" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" Watermark="Почтовый индекс"/>
 
 					<TextBlock Margin="0 17.5 0 0" FontSize="15" FontWeight="Bold" Text="Способ оплаты:" TextDecorations="Underline"/>
 
-					<RadioButton FontSize="13" GroupName="Payment" Margin="0 7.5 0 0"  Content="Банковская карта"/>
-					<RadioButton FontSize="13" GroupName="Payment" Margin="0 -10 0 0" Content="Наличные курьеру"/>
+					<RadioButton FontSize="13" GroupName="Payment" Margin="0 7.5 0 0"  Content="Банковская карта" Checked="RbPayment_Checked"/>
+					<RadioButton FontSize="13" GroupName="Payment" Margin="0 -10 0 0" Content="Наличные курьеру" Checked="RbPayment_Checked"/>
 				</StackPanel>
 			</ScrollViewer>
 		</Border>
 
-		<Button Grid.Row="1" Grid.Column="1" Classes="white " CornerRadius="7" Padding=" 10 5" Margin="0 12.5" Background="#bfff0000" FontSize="15" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Center">
+		<Button x:Name="btnPlaceAnOrder" Grid.Row="1" Grid.Column="1" Classes="white " CornerRadius="7" Padding=" 10 5" Margin="0 12.5" Background="#bfff0000" FontSize="15" Foreground="#ffffff" FontWeight="Bold" HorizontalAlignment="Center">
 			<TextBlock Text="Оформить заказ"/>
 		</Button>
 	</Grid>

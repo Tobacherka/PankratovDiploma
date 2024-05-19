@@ -26,7 +26,7 @@ namespace ApiPunk.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> HandleCommand(string command, string parameter = "", string parameter2 = "", string parameter3 = "", string parameter4 = "")
+        public async Task<IActionResult> HandleCommand(string command, string parameter = "", string parameter2 = "", string parameter3 = "", string parameter4 = "", string parameter5 = "", string parameter6 = "", string parametr7 = "")
         {
             switch (command)
             {
@@ -183,6 +183,32 @@ namespace ApiPunk.Controllers
                         foreach (var product in productsInCart)
                         {
                             _context.OrderDetails.Remove(product);
+                        }
+
+                        await _context.SaveChangesAsync();
+
+                        return Ok();
+                    }
+
+                case "PlaceAnOrder":
+                    {
+                        int orderID = int.Parse(parameter);
+                        string newOrderStatus = "Оформлен";
+
+                        var order = await _context.Orders
+                            .Where(o => o.OrderID == orderID)
+                            .FirstOrDefaultAsync();
+
+                        if (order != null)
+                        {
+                            order.Status = newOrderStatus;
+                            order.UserFullName = parameter2;
+                            order.UserPhone = parameter3;
+                            order.UserEmail = parameter4;
+                            order.PaymentMethod = parameter5;
+                            order.Address = parameter6;
+                            order.DeliveryMethod = parametr7;
+                            await _context.SaveChangesAsync();
                         }
 
                         return Ok();

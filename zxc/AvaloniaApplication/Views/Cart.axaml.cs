@@ -1,7 +1,10 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using AvaloniaApplication.Classes;
+using System;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,11 +13,15 @@ namespace AvaloniaApplication.Views
 {
     public partial class Cart : UserControl
     {
+        private int currentOrderId;
+
         public Cart()
         {
             InitializeComponent();
             GeneredItems();
             SetTotalCost();
+            btnPlaceAnOrder.Click += BtnPlaceAnOrder_Click;
+            btnEmptyTheTrash.Click += BtnEmptyTheTrash_Click;
         }
 
         public async Task GeneredItems()
@@ -73,29 +80,38 @@ namespace AvaloniaApplication.Views
         private Bitmap ImageConverter(byte[]? bytes)
         {
             if (bytes == null)
-                return new("D:\\учеба\\Диплом Панкратова\\Диплом\\Pankratov\\zxc\\AvaloniaApplication\\Assets\\photo.png");
+            {
+                var uri = new Uri("avares://AvaloniaApplication/Assets/photo.png");
+                using (var stream = AssetLoader.Open(uri))
+                {
+                    var bitmap = new Bitmap(stream);
+                    return bitmap;
+                }
+            }
             using (MemoryStream stream = new MemoryStream(bytes))
                 return new(stream);
         }
 
-        private void BtnEmpltyTheTrash_Click(object? sender, RoutedEventArgs e)
+        private async void BtnEmptyTheTrash_Click(object? sender, RoutedEventArgs e)
         {
             if (GlobalBuffer.CurrentUserID > -1)
             {
-                EmptyTheTrash();
-                //SetTotalCost();
+                await EmptyTheTrash();
+                Refresh();
+                SetTotalCost();
             }
         }
 
-        private async void EmptyTheTrash()
+        private async Task EmptyTheTrash()
         {
             try
             {
-                await APIWork.SendRequest("EmptyTheTrash");
+                await APIWork.SendRequest("EmptyTheTrash", GlobalBuffer.CurrentUserID.ToString());
+                return;
             }
             catch
             {
-                
+                return;
             }
         }
 
@@ -105,6 +121,7 @@ namespace AvaloniaApplication.Views
             try
             {
                 var response = await APIWork.GetUserCart();
+                currentOrderId = response.OrderID;
                 totalCost = response.TotalCost;
             }
             catch
@@ -114,9 +131,9 @@ namespace AvaloniaApplication.Views
             tbTotalCost.Text = $"Общая сумма: {(totalCost == null ? 0.00m : totalCost)}";
         }
 
-        public void Refresh()
+        public async void Refresh()
         {
-            var orderDetails = APIWork.GetProductsInCart().Result;
+            var orderDetails = await APIWork.GetProductsInCart();
             GridForCart.Children.Clear();
             if (orderDetails != null)
             {
@@ -156,9 +173,13 @@ namespace AvaloniaApplication.Views
             }
         }
 
-        //private void ProductPlusButton_Click(object? sender, RoutedEventArgs e) 
-        //{
-        //    SetTotalCost();
-        //}
+        private void BtnPlaceAnOrder_Click(object? sender, RoutedEventArgs e)
+        {
+            if (GridForCart.Children.Any())
+            {
+                GlobalBuffer._mainGrid.Children.Clear();
+                GlobalBuffer._mainGrid.Children.Add(new PlacingAnOrder(currentOrderId));
+            }
+        }
     }
 }
