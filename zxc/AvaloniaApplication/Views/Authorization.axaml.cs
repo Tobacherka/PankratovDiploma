@@ -28,11 +28,11 @@ namespace AvaloniaApplication.Views
         {
             if (!string.IsNullOrEmpty(LoginText.Text) && !string.IsNullOrEmpty(PasswordText.Text))
             {
-                CheckDataForAutorizaion();
+                CheckDataForAuthorizaion();
             }
         }
 
-        private async void CheckDataForAutorizaion()
+        private async void CheckDataForAuthorizaion()
         {
             var responseArray = await APIWork.SendRequest("Authorization", LoginText.Text, PasswordText.Text);
             

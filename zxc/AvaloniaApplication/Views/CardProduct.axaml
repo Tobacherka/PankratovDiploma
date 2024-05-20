@@ -34,7 +34,7 @@
 					</ListBox>
 				</StackPanel>
 
-				<StackPanel Grid.Row="1" Margin="0 25 0 0">
+				<StackPanel x:Name="spReviews" Grid.Row="1" Margin="0 25 0 0">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="Отзывы:" FontSize="15" FontWeight="Bold" TextDecorations="Underline" Margin="0 0 5 0" VerticalAlignment="Center"/>
 						<Image Source="{SvgImage /Assets/star.svg}" Height="20" VerticalAlignment="Center" Margin="2.5 0"/>

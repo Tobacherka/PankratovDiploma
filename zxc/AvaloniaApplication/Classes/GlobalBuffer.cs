@@ -16,5 +16,6 @@ namespace AvaloniaApplication.Classes
         public static int CurrentUserID = -1;
         public static string? currentCartTotalCost {  get; set; }
         internal static List<DbProduct>? Products {  get; set; }
+        public static Window mainWindow { get; set; }
     }
 }

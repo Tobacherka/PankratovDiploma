@@ -45,6 +45,11 @@ namespace ApiPunk.Classes
         public string? Phone { get; set; }
         public DateTime? DateBirhday { get; set; }
         public DateTime RegistrationDate { get; set; }
+        public string? BankCardNumber { get; set; }
+        public string? Region { get; set; }
+        public string? City { get; set; }
+        public string? StreetHouseApartament { get; set; }
+        public string? PostalCode { get; set; }
     }
 
     [Table("Products", Schema = "Shop")]
@@ -56,6 +61,11 @@ namespace ApiPunk.Classes
         public string Category { get; set; }
         public decimal Price { get; set; }
         public byte[]? image { get; set; }
+        public double? Weight { get; set; }
+        public string? Materials { get; set; }
+        public string? Color { get; set; }
+        public string? Warranty { get; set; }
+        public string? Description { get; set; }
     }
 
     [Table("Orders", Schema = "Shop")]

@@ -1,0 +1,22 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="250"
+        x:Class="AvaloniaApplication.Views.NotificationDialog">
+
+	<Border Background="White" Margin="12.5" CornerRadius="10" BoxShadow="0 0 25 #7f000000">
+		<Grid Margin="20" RowDefinitions="auto,*,auto">
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<Image Source="{SvgImage /Assets/notifications.svg}" Width="24" Height="24"/>
+				<TextBlock Text="Уведомление" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+			</StackPanel>
+			<StackPanel Grid.Row="1" Spacing="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+				<TextBlock x:Name="CardMessage" FontSize="14" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+				<TextBlock x:Name="EmailMessage" FontSize="14" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="0 10 0 0"/>
+			</StackPanel>
+			<Button x:Name="OkButton" Grid.Row="2" Classes="white" Content="OK" HorizontalAlignment="Center" Width="100" VerticalAlignment="Bottom" Margin="0 20 0 0" Background="#bfff0000" Foreground="White" CornerRadius="7"/>
+		</Grid>
+	</Border>
+	
+</Window>

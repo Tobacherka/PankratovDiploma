@@ -214,6 +214,24 @@ namespace ApiPunk.Controllers
                         return Ok();
                     }
 
+                case "SetCardNumber":
+                    {
+                        int userID = int.Parse(parameter);
+                        string newCardNumber = parameter2;
+
+                        var user = await _context.Users
+                            .Where(u => u.UserID == userID)
+                            .FirstOrDefaultAsync();
+
+                        if (user != null)
+                        {
+                            user.BankCardNumber = newCardNumber;
+                            await _context.SaveChangesAsync();
+                        }
+
+                        return Ok();
+                    }
+
                 default:
                     return NotFound("FailToWorkRequest");
 
@@ -281,6 +299,21 @@ namespace ApiPunk.Controllers
             {
 
                 return StatusCode(500, "An error occurred while retrieving product.");
+            }
+        }
+
+        [HttpGet("users/user")]
+        public async Task<ActionResult<User>> GetUserById(int userID)
+        {
+            try
+            {
+                var user = await _context.Users.Where(u => u.UserID == userID).FirstOrDefaultAsync();
+                return Ok(user);
+            }
+            catch
+            {
+
+                return NotFound();
             }
         }
     }

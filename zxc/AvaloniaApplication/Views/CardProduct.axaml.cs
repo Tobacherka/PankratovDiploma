@@ -79,13 +79,38 @@ namespace AvaloniaApplication.Views
             Grid.SetRowSpan(ProductControl, 2);
             GridForCardProduct.Children.Add(ProductControl);
             FillingTheCharacteristics();
+            spReviews.IsVisible = false;
         }
 
         public async void FillingTheCharacteristics()
         {
             var product = await APIWork.GetProductById(ProductControl.Id);
             lbCharacteristics.Items.Clear();
-            lbCharacteristics.Items.Add("Х " + product.Category);
+
+            if (!string.IsNullOrEmpty(product?.Description))
+            {
+                lbCharacteristics.Items.Add("Х ќписание: " + product?.Description);
+            }
+
+            if (product?.Weight != null)
+            {
+                lbCharacteristics.Items.Add("Х ¬ес: " + product?.Weight.ToString());
+            }
+
+            if (!string.IsNullOrEmpty(product?.Materials))
+            {
+                lbCharacteristics.Items.Add("Х ћатериалы: " + product?.Materials);
+            }
+
+            if (!string.IsNullOrEmpty(product?.Color))
+            {
+                lbCharacteristics.Items.Add("Х ÷вет: " + product?.Color);
+            }
+
+            if (!string.IsNullOrEmpty(product?.Warranty))
+            {
+                lbCharacteristics.Items.Add("Х √аранти€: " + product?.Warranty);
+            }
         }
     }
 }

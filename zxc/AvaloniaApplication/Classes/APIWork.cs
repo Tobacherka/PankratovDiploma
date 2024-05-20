@@ -123,5 +123,18 @@ namespace AvaloniaApplication.Classes
                 return null;
             }
         }
+
+        public static async Task<DbUser?> GetUserById(int userID)
+        {
+            try
+            {
+                var response = await _httpClient.GetFromJsonAsync<DbUser?>($"https://localhost:7250/Command/users/user?userID={userID}");
+                return response;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
