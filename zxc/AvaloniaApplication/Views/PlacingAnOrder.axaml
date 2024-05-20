@@ -34,7 +34,7 @@
 					<TextBlock Margin="0 17.5 0 0" FontSize="15" FontWeight="Bold" Text="Способ оплаты:" TextDecorations="Underline"/>
 
 					<RadioButton FontSize="13" GroupName="Payment" Margin="0 7.5 0 0"  Content="Банковская карта" Checked="RbPayment_Checked"/>
-					<RadioButton FontSize="13" GroupName="Payment" Margin="0 -10 0 0" Content="Наличные курьеру" Checked="RbPayment_Checked"/>
+					<RadioButton FontSize="13" GroupName="Payment" Margin="0 -10 0 0" Content="Наличные" Checked="RbPayment_Checked"/>
 				</StackPanel>
 			</ScrollViewer>
 		</Border>

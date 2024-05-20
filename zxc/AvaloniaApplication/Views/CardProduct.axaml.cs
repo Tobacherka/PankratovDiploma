@@ -4,6 +4,7 @@ using Avalonia.Media;
 using Avalonia.Styling;
 using AvaloniaApplication.Classes;
 using System.Linq;
+using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace AvaloniaApplication.Views
@@ -76,39 +77,15 @@ namespace AvaloniaApplication.Views
             Grid.SetColumn(ProductControl, 0);
             Grid.SetRow(ProductControl, 0);
             Grid.SetRowSpan(ProductControl, 2);
-            GridForCardProduct.Children.Clear();
             GridForCardProduct.Children.Add(ProductControl);
+            FillingTheCharacteristics();
+        }
 
-            //Product product = new Product();
-            //product.plus.IsVisible = false;
-            //product.minus.IsVisible = false;
-            //product.buttonCart.IsVisible = false;
-            //product.buttonOrders.IsVisible = false;
-            //product.menuOrders.IsVisible = false;
-            //product.border.CornerRadius = new Avalonia.CornerRadius(30);
-            //product.border.BoxShadow = new BoxShadows(
-            //    new BoxShadow
-            //    {
-            //        OffsetX = 0,
-            //        OffsetY = 0,
-            //        Blur = 25,
-            //        Spread = 0,
-            //        Color = Color.Parse("#7f000000"),
-
-            //    }
-            //);
-            //product.grid.Margin = new Thickness(25);
-            //product.category.FontSize = 11;
-            //product.name.FontSize = 13;
-            //product.price.FontSize = 12;
-            //product.button.CornerRadius = new Avalonia.CornerRadius(7);
-            //product.button.Padding = new Thickness(10, 5);
-            //product.button.FontSize = 13;
-            //product.textblock.Text = "Добавить в корзину";
-            //Grid.SetColumn(product, 0);
-            //Grid.SetRow(product, 0);
-            //Grid.SetRowSpan(product, 2);
-            //GridForCardProduct.Children.Add(product);
+        public async void FillingTheCharacteristics()
+        {
+            var product = await APIWork.GetProductById(ProductControl.Id);
+            lbCharacteristics.Items.Clear();
+            lbCharacteristics.Items.Add("• " + product.Category);
         }
     }
 }

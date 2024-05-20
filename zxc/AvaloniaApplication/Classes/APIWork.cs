@@ -74,12 +74,6 @@ namespace AvaloniaApplication.Classes
 
         public static async Task<List<DbOrderDetail>?> GetProductsInCart()
         {
-            //var uriBuilder = new UriBuilder("https://localhost:7250/Command/cart");
-            //var query = $"userID = {GlobalBuffer.CurrentUserID}";
-            //var request = new HttpRequestMessage(HttpMethod.Get, uriBuilder.Uri);
-            //uriBuilder.Query = query;
-            //var response = await _httpClient.SendAsync(request);
-            //return GetFromJsonAsync<List<DbOrderDetail>?>response.Content;
             try
             {
                 var response = await _httpClient.GetFromJsonAsync<List<DbOrderDetail>?>($"https://localhost:7250/Command/cart/products-in-cart?userID={GlobalBuffer.CurrentUserID}");
@@ -112,6 +106,19 @@ namespace AvaloniaApplication.Classes
                 return response;
             }
             catch 
+            {
+                return null;
+            }
+        }
+
+        public static async Task<DbProduct?> GetProductById(int productID)
+        {
+            try
+            {
+                var response = await _httpClient.GetFromJsonAsync<DbProduct?>($"https://localhost:7250/Command/products/product?productID={productID}");
+                return response;
+            }
+            catch
             {
                 return null;
             }

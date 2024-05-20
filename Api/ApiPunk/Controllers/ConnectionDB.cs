@@ -268,5 +268,20 @@ namespace ApiPunk.Controllers
                 return StatusCode(500, "An error occurred while retrieving products.");
             }
         }
+
+        [HttpGet("products/product")]
+        public async Task<ActionResult<Product>> GetProductById(int productID)
+        {
+            try
+            {
+                var product = await _context.Products.Where(p => p.Id == productID).FirstOrDefaultAsync();
+                return Ok(product);
+            }
+            catch
+            {
+
+                return StatusCode(500, "An error occurred while retrieving product.");
+            }
+        }
     }
 }

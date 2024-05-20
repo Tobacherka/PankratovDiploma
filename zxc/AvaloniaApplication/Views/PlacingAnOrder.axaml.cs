@@ -13,7 +13,7 @@ namespace AvaloniaApplication.Views
 
         public PlacingAnOrder() 
         {
-        
+            InitializeComponent();
         }
         public PlacingAnOrder(int orderId)
         {
