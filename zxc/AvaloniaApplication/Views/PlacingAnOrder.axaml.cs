@@ -7,6 +7,7 @@ namespace AvaloniaApplication.Views
 {
     public partial class PlacingAnOrder : UserControl
     {
+        private Panel _overlayPanel;
         private int currentOrderId;
         private string? deliveryMethod;
         private string? paymentMethod;
@@ -19,6 +20,8 @@ namespace AvaloniaApplication.Views
         public PlacingAnOrder(int orderId)
         {
             InitializeComponent();
+            _overlayPanel = new Panel();
+            MainGrid.Children.Add( _overlayPanel );
             currentOrderId = orderId;
             btnPlaceAnOrder.Click += BtnPlaceAnOrder_Click;
             DefaultFillingFields();
@@ -33,7 +36,15 @@ namespace AvaloniaApplication.Views
                     if (string.IsNullOrEmpty(user?.BankCardNumber))
                     {
                         var dialog = new CardInputDialog();
-                        var result = await dialog.ShowDialog<string>(GlobalBuffer.mainWindow);
+                        string? result = null;
+                        //var result = await dialog.ShowDialog<string>(GlobalBuffer.mainWindow);
+                        dialog.CardNumberSubmitted += (s, cardNumber) =>
+                        {
+                            _overlayPanel.Children.Clear();
+                            _overlayPanel.IsHitTestVisible = false;
+                            result = cardNumber;
+                            //await notification.ShowDialog(GlobalBuffer.mainWindow);
+                        };
 
                         if (result != null)
                         {
@@ -45,7 +56,15 @@ namespace AvaloniaApplication.Views
                         var cardMessage = $"Платеж выполнен с банковской карты {maskedCardNumber}.";
                         var emailMessage = $"Чек отправлен на электронную почту {user.Email}.";
                         var notification = new NotificationDialog(cardMessage, emailMessage);
-                        await notification.ShowDialog(GlobalBuffer.mainWindow);
+
+                        notification.OkClicked += (s, e) =>
+                        {
+                            _overlayPanel.Children.Clear();
+                            _overlayPanel.IsHitTestVisible = false;
+                        };
+
+                        _overlayPanel.Children.Add(dialog);
+                        _overlayPanel.IsHitTestVisible = true;
                     }
                 }
                 string address = $"{tbRegion.Text}, {tbCity.Text}, {tbStreetHouseApartament.Text}, {tbPostalCode.Text}";

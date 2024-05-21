@@ -1,12 +1,15 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using System;
 using System.Dynamic;
 
 namespace AvaloniaApplication.Views
 {
-    public partial class CardInputDialog : Window
+    public partial class CardInputDialog : UserControl
     {
+        public event EventHandler<string?> CardNumberSubmitted;
+        public event EventHandler Cancelled;
         public CardInputDialog()
         {
             InitializeComponent();
@@ -19,13 +22,15 @@ namespace AvaloniaApplication.Views
             if (ValidateInput())
             {
                 // Обработка введённых данных
-                this.Close(CardNumberTextBox.Text);
+                CardNumberSubmitted?.Invoke(this, CardNumberTextBox.Text ?? null);
+                //this.Close(CardNumberTextBox.Text);
             }
         }
 
         private void CancelButton_Click(object? sender, RoutedEventArgs e)
         {
-            this.Close(null);
+            Cancelled?.Invoke(this, EventArgs.Empty);
+            //this.Close(null);
         }
 
         private bool ValidateInput()

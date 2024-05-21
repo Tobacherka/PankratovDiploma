@@ -1,10 +1,12 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using System;
 
 namespace AvaloniaApplication.Views
 {
-    public partial class NotificationDialog : Window
+    public partial class NotificationDialog : UserControl
     {
+        public event EventHandler OkClicked;
         public NotificationDialog()
         {
             InitializeComponent();
@@ -20,7 +22,8 @@ namespace AvaloniaApplication.Views
 
         private void OkButton_Click(object? sender, RoutedEventArgs e)
         {
-            this.Close();
+            OkClicked?.Invoke(this, EventArgs.Empty);
+            //this.Close();
         }
     }
 }
