@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using AvaloniaApplication.Classes;
 using HarfBuzzSharp;
+using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Views
 {
@@ -21,10 +22,10 @@ namespace AvaloniaApplication.Views
         {
             InitializeComponent();
             _overlayPanel = new Panel();
-            MainGrid.Children.Add( _overlayPanel );
+            MainGrid.Children.Add(_overlayPanel);
             currentOrderId = orderId;
-            btnPlaceAnOrder.Click += BtnPlaceAnOrder_Click;
             DefaultFillingFields();
+            btnPlaceAnOrder.Click += BtnPlaceAnOrder_Click;
         }
         
         private async void BtnPlaceAnOrder_Click(object? sender, RoutedEventArgs e)
@@ -35,43 +36,64 @@ namespace AvaloniaApplication.Views
                 {
                     if (string.IsNullOrEmpty(user?.BankCardNumber))
                     {
-                        var dialog = new CardInputDialog();
-                        string? result = null;
-                        //var result = await dialog.ShowDialog<string>(GlobalBuffer.mainWindow);
-                        dialog.CardNumberSubmitted += (s, cardNumber) =>
-                        {
-                            _overlayPanel.Children.Clear();
-                            _overlayPanel.IsHitTestVisible = false;
-                            result = cardNumber;
-                            //await notification.ShowDialog(GlobalBuffer.mainWindow);
-                        };
-
-                        if (result != null)
-                        {
-                            await APIWork.SendRequest("SetCardNumber", GlobalBuffer.CurrentUserID.ToString(), result);
-                            user = await APIWork.GetUserById(GlobalBuffer.CurrentUserID);
-                        }
-
-                        var maskedCardNumber = "**** **** **** " + user?.BankCardNumber[(user.BankCardNumber.Length - 4)..];
-                        var cardMessage = $"Платеж выполнен с банковской карты {maskedCardNumber}.";
-                        var emailMessage = $"Чек отправлен на электронную почту {user.Email}.";
-                        var notification = new NotificationDialog(cardMessage, emailMessage);
-
-                        notification.OkClicked += (s, e) =>
-                        {
-                            _overlayPanel.Children.Clear();
-                            _overlayPanel.IsHitTestVisible = false;
-                        };
-
-                        _overlayPanel.Children.Add(dialog);
-                        _overlayPanel.IsHitTestVisible = true;
+                        await ShowCardInputDialog();
                     }
+                    ShowNotificationDialog();
                 }
-                string address = $"{tbRegion.Text}, {tbCity.Text}, {tbStreetHouseApartament.Text}, {tbPostalCode.Text}";
-                await APIWork.SendRequest("PlaceAnOrder", currentOrderId.ToString(), tbFullName.Text, tbPhone.Text, tbEmail.Text, paymentMethod, address, deliveryMethod);
-                GlobalBuffer._mainGrid.Children.Clear();
-                GlobalBuffer._mainGrid.Children.Add(new Catalog());
+                else
+                    await FinalizeOrder();
             }
+        }
+
+        private void ShowNotificationDialog()
+        {
+                _overlayPanel.Children.Clear();
+            var maskedCardNumber = "**** **** **** " + user.BankCardNumber.Substring(user.BankCardNumber.Length - 4);
+            var cardMessage = $"Платеж выполнен с банковской карты {maskedCardNumber}.";
+            var emailMessage = $"Чек отправлен на электронную почту {user.Email}.";
+            var notification = new NotificationDialog(cardMessage, emailMessage);
+
+            notification.OkClicked += async (s, e) =>
+            {
+                _overlayPanel.IsHitTestVisible = false;
+                await FinalizeOrder();
+            };
+
+            _overlayPanel.Children.Add(notification);
+            _overlayPanel.IsHitTestVisible = true;
+        }
+
+        private async Task ShowCardInputDialog()
+        {
+            var dialog = new CardInputDialog();
+            dialog.CardNumberSubmitted += async (s, cardNumber) =>
+            {
+                _overlayPanel.Children.Clear();
+                _overlayPanel.IsHitTestVisible = false;
+
+                await APIWork.SendRequest("SetCardNumber", GlobalBuffer.CurrentUserID.ToString(), cardNumber);
+                user = await APIWork.GetUserById(GlobalBuffer.CurrentUserID);
+
+                ShowNotificationDialog();
+            };
+
+            dialog.Cancelled += (s, e) =>
+            {
+                _overlayPanel.Children.Clear();
+                _overlayPanel.IsHitTestVisible = false;
+            };
+
+            _overlayPanel.Children.Add(dialog);
+            _overlayPanel.IsHitTestVisible = true;
+            await Task.Delay(500);
+        }
+
+        public async Task FinalizeOrder()
+        {
+            string address = $"{tbRegion.Text}, {tbCity.Text}, {tbStreetHouseApartament.Text}, {tbPostalCode.Text}";
+            await APIWork.SendRequest("PlaceAnOrder", currentOrderId.ToString(), tbFullName.Text, tbPhone.Text, tbEmail.Text, paymentMethod, address, deliveryMethod);
+            GlobalBuffer._mainGrid.Children.Clear();
+            GlobalBuffer._mainGrid.Children.Add(new Catalog());
         }
 
         private void RbDelivery_Checked(object? sender, RoutedEventArgs e)
