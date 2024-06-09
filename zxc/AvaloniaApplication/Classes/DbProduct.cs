@@ -11,7 +11,7 @@ namespace AvaloniaApplication.Classes
         public int Id { get; set; }
         public string Name { get; set; }
         public string Category { get; set; }
-        public decimal Price { get; set; }
+        public decimal Price { get; set; } = 0.00m;
         public byte[]? image { get; set; }
         public double? Weight { get; set; }
         public string? Materials { get; set; }

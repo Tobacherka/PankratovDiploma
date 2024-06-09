@@ -43,7 +43,7 @@ namespace AvaloniaApplication.Views
                         productControl.buttonOrders.IsVisible = false;
                         productControl.Id = dbProduct.Id;
                         productControl.name.Text = dbProduct.Name;
-                        productControl.price.Text = orderDetail.Price.ToString();
+                        productControl.price.Text = orderDetail.Price.ToString("F2");
                         productControl.category.Text = dbProduct.Category;
                         productControl.image.Source = ImageConverter(dbProduct.image);
                         productControl.CountInOrder = orderDetail.Quantity;

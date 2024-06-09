@@ -2,27 +2,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="550" d:DesignHeight="350"
+        mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
         x:Class="AvaloniaApplication.Views.CardInputDialog">
 
-	<Border Background="White" Margin="12.5" CornerRadius="30" BoxShadow="0 0 25 #7f000000">
-		<StackPanel Margin="25" Spacing="7.5">
-			<TextBlock FontSize="15" FontWeight="Bold" Text="Данные банковской карты:" TextDecorations="Underline"/>
+	<Grid RowDefinitions="* * *" ColumnDefinitions="2* 1.5* 2*">
+		<Border Grid.Row="1" Grid.Column="1" Background="White" Margin="12.5" CornerRadius="30" BoxShadow="0 0 25 #7f000000">
+			<StackPanel Margin="25" Spacing="7.5">
+				<TextBlock FontSize="15" FontWeight="Bold" Text="Данные банковской карты:" TextDecorations="Underline"/>
 
-			<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Номер карты:"/>
-			<TextBox x:Name="CardNumberTextBox" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" MaxLength="16" Watermark="1234 5678 9012 3456"/>
+				<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Номер карты:"/>
+				<TextBox x:Name="CardNumberTextBox" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" MaxLength="16" Watermark="1234 5678 9012 3456"/>
 
-			<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Срок действия (MM/YY):"/>
-			<TextBox x:Name="ExpiryDateTextBox" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" MaxLength="5" Watermark="MM/YY"/>
+				<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Срок действия (MM/YY):"/>
+				<TextBox x:Name="ExpiryDateTextBox" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" MaxLength="5" Watermark="MM/YY"/>
 
-			<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="CVV:"/>
-			<TextBox x:Name="CVVTextBox" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" MaxLength="3" Watermark="123"/>
+				<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="CVV:"/>
+				<TextBox x:Name="CVVTextBox" Classes="red" FontSize="11" CornerRadius="7" Background="#3fff0000" BorderThickness="0" MinHeight="0" Padding="5" VerticalContentAlignment="Center" MaxLength="3" Watermark="123"/>
 
-			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0" Spacing="10">
-				<Button Name="OkButton" Classes="white" Content="Ок" Width="75" Background="#bfff0000" Foreground="White" CornerRadius="7"/>
-				<Button Name="CancelButton" Classes="white" Content="Отмена" Width="75" Background="#bfff0000" Foreground="White" CornerRadius="7"/>
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0" Spacing="10">
+					<Button Name="OkButton" Classes="white" Content="Ок" Width="75" Background="#bfff0000" Foreground="White" CornerRadius="7"/>
+					<Button Name="CancelButton" Classes="white" Content="Отмена" Width="75" Background="#bfff0000" Foreground="White" CornerRadius="7"/>
+				</StackPanel>
 			</StackPanel>
-		</StackPanel>
-	</Border>
+		</Border>
+	</Grid>
 	
 </UserControl>

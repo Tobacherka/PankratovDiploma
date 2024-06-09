@@ -21,7 +21,7 @@ namespace ApiPunk.Controllers
 
         public CommandController()
         {
-            _connectionString = "Data Source=DESKTOP-0U04J8M\\SQLEXPRESS;Initial Catalog=Shop;Integrated Security=True;Encrypt=False";
+            _connectionString = "Server=127.0.0.1,1433;Database=Shop;User Id=sa;Password=4j55w#W^&vEi@5~ci2zTPNZk@nYtCHtd;Encrypt=False;";
             _context = new ApplicationDbContext(_connectionString);
         }
 
@@ -30,7 +30,7 @@ namespace ApiPunk.Controllers
         {
             switch (command)
             {
-                case "Registration":
+                case "/":
                     {
                         try
                         {

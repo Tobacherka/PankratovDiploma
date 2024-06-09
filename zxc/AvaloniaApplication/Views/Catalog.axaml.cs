@@ -72,6 +72,21 @@ namespace AvaloniaApplication.Views
                 {
                     row++;
                     column = 0;
+                    var productControl = new Product(true);
+                    productControl.Id = product.Id;
+                    productControl.name.Text = product.Name;
+                    productControl.price.Text = product.Price.ToString();
+                    productControl.category.Text = product.Category;
+                    productControl.image.Source = ImageConverter(product.image);
+
+                    productControl.plus.IsVisible = false;
+                    productControl.minus.IsVisible = false;
+                    productControl.buttonCart.IsVisible = false;
+                    productControl.buttonOrders.IsVisible = false;
+                    productControl.menuOrders.IsVisible = false;
+                    Grid.SetRow(productControl, row);
+                    Grid.SetColumn(productControl, column);
+                    GridForCatalog.Children.Add(productControl);
                 }
             }
         }

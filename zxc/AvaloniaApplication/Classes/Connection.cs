@@ -8,6 +8,6 @@ namespace AvaloniaApplication.Classes
 {
     public static class Connection
     {
-        public static UriBuilder ConnectionDB = new UriBuilder("https://localhost:7250/Command");
+        public static UriBuilder ConnectionDB = new UriBuilder("http://91.108.241.127:81/Command");
     }
 }

@@ -85,31 +85,36 @@ namespace AvaloniaApplication.Views
         public async void FillingTheCharacteristics()
         {
             var product = await APIWork.GetProductById(ProductControl.Id);
-            lbCharacteristics.Items.Clear();
+            //lbCharacteristics.Items.Clear();
 
             if (!string.IsNullOrEmpty(product?.Description))
             {
-                lbCharacteristics.Items.Add("Х ќписание: " + product?.Description);
+                //lbCharacteristics.Items.Add("Х ќписание: " + product?.Description);
+                tbDescription.Text = "Х ќписание: " + product?.Description;
             }
 
             if (product?.Weight != null)
             {
-                lbCharacteristics.Items.Add("Х ¬ес: " + product?.Weight.ToString());
+                //lbCharacteristics.Items.Add("Х ¬ес: " + product?.Weight.ToString());
+                tbWeight.Text = "Х ¬ес: " + product?.Weight.ToString();
             }
 
             if (!string.IsNullOrEmpty(product?.Materials))
             {
-                lbCharacteristics.Items.Add("Х ћатериалы: " + product?.Materials);
+                //lbCharacteristics.Items.Add("Х ћатериалы: " + product?.Materials);
+                tbMaterials.Text = "Х ћатериалы: " + product?.Materials;
             }
 
             if (!string.IsNullOrEmpty(product?.Color))
             {
-                lbCharacteristics.Items.Add("Х ÷вет: " + product?.Color);
+                //lbCharacteristics.Items.Add("Х ÷вет: " + product?.Color);
+                tbColor.Text = "Х ÷вет: " + product?.Color;
             }
 
             if (!string.IsNullOrEmpty(product?.Warranty))
             {
-                lbCharacteristics.Items.Add("Х √аранти€: " + product?.Warranty);
+                //lbCharacteristics.Items.Add("Х √аранти€: " + product?.Warranty);
+                tbWarranty.Text = "Х √аранти€: " + product?.Warranty;
             }
         }
     }
