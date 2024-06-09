@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Views
 {
+    /// <summary>
+    /// Класс оформления заказа
+    /// </summary>
     public partial class PlacingAnOrder : UserControl
     {
         private Panel _overlayPanel;
@@ -28,6 +31,11 @@ namespace AvaloniaApplication.Views
             btnPlaceAnOrder.Click += BtnPlaceAnOrder_Click;
         }
         
+        /// <summary>
+        /// обработчик нажатия на кнопку для оформления заказа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BtnPlaceAnOrder_Click(object? sender, RoutedEventArgs e)
         {
             if (CheckFields())
@@ -45,6 +53,9 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Метод для вывода уведомления
+        /// </summary>
         private void ShowNotificationDialog()
         {
                 _overlayPanel.Children.Clear();
@@ -63,6 +74,9 @@ namespace AvaloniaApplication.Views
             _overlayPanel.IsHitTestVisible = true;
         }
 
+        /// <summary>
+        /// Метод для открытия диалогового окна для ввода банковской карты
+        /// </summary>
         private async Task ShowCardInputDialog()
         {
             var dialog = new CardInputDialog();
@@ -88,6 +102,9 @@ namespace AvaloniaApplication.Views
             await Task.Delay(500);
         }
 
+        /// <summary>
+        /// Метод для оформления заказа
+        /// </summary>
         public async Task FinalizeOrder()
         {
             string address = $"{tbRegion.Text}, {tbCity.Text}, {tbStreetHouseApartament.Text}, {tbPostalCode.Text}";
@@ -96,6 +113,11 @@ namespace AvaloniaApplication.Views
             GlobalBuffer._mainGrid.Children.Add(new Catalog());
         }
 
+        /// <summary>
+        /// Обработчик выбора способа доставки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RbDelivery_Checked(object? sender, RoutedEventArgs e)
         {
             if (sender is RadioButton radioButton)
@@ -104,6 +126,11 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Обработчик выбора способа оплаты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RbPayment_Checked(object? sender, RoutedEventArgs e)
         {
             if (sender is RadioButton radioButton)
@@ -112,6 +139,10 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Метод для проверки заполненности полей
+        /// </summary>
+        /// <returns>Заполненность</returns>
         public bool CheckFields()
         {
             return !string.IsNullOrEmpty(tbFullName.Text)
@@ -125,6 +156,9 @@ namespace AvaloniaApplication.Views
                 && !string.IsNullOrEmpty(paymentMethod);
         }
 
+        /// <summary>
+        /// Метод для заполнения данных, которые уже указаны в профиле
+        /// </summary>
         public async void DefaultFillingFields()
         {
             user = await APIWork.GetUserById(GlobalBuffer.CurrentUserID);

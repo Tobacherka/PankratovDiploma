@@ -5,6 +5,9 @@ using System.Data.SqlTypes;
 
 namespace ApiPunk.Classes
 {
+    /// <summary>
+    /// Контекст базы данных
+    /// </summary>
     public class ApplicationDbContext : DbContext
     {
         private readonly string _connectionString;

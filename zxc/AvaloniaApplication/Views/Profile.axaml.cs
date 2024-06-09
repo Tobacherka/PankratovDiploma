@@ -11,7 +11,6 @@ namespace AvaloniaApplication.Views
         {
             InitializeComponent();
             GeneredItem();
-            //LogOutBtn.Click += LogOutBtn_Click;
         }
 
         private void LogOutBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

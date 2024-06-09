@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Classes
 {
+    /// <summary>
+    /// Модель для состава заказа
+    /// </summary>
     public class DbOrderDetail
     {
         public int RecordID { get; set; }

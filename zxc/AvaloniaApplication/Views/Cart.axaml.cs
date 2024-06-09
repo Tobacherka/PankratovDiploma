@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Views
 {
+    /// <summary>
+    /// Класс корзины
+    /// </summary>
     public partial class Cart : UserControl
     {
         private int currentOrderId;
@@ -24,6 +27,9 @@ namespace AvaloniaApplication.Views
             btnEmptyTheTrash.Click += BtnEmptyTheTrash_Click;
         }
 
+        /// <summary>
+        /// Метод для генерации корзины
+        /// </summary>
         public async Task GeneredItems()
         {
             var orderDetails = await APIWork.GetProductsInCart();
@@ -49,8 +55,6 @@ namespace AvaloniaApplication.Views
                         productControl.CountInOrder = orderDetail.Quantity;
                         productControl.CurrentCart = this;
                         productControl.buttonCart.Content = $"             {productControl.CountInOrder}             ";
-                        //productControl.plus.Click += ProductPlusButton_Click;
-                        //productControl.minus.Click += ProductPlusButton_Click;
                         Grid.SetRow(productControl, row);
                         Grid.SetColumn(productControl, column);
                         GridForCart.Children.Add(productControl);
@@ -64,19 +68,13 @@ namespace AvaloniaApplication.Views
                     }
                 }
             }
-
-            //for (int i = 0; i < 6; i++)
-            //{
-            //    Product product = new Product();
-            //    product.button.IsVisible = false;
-            //    product.menuOrders.IsVisible = false;
-            //    product.buttonOrders.IsVisible = false;
-            //    Grid.SetRow(product, 0);
-            //    Grid.SetColumn(product, i);
-            //    GridForCart.Children.Add(product);
-            //}
         }
 
+        /// <summary>
+        /// Метод для конвертации массива байтов в изображение
+        /// </summary>
+        /// <param name="bytes">Массив байтов</param>
+        /// <returns>Изображение</returns>
         private Bitmap ImageConverter(byte[]? bytes)
         {
             if (bytes == null)
@@ -92,6 +90,11 @@ namespace AvaloniaApplication.Views
                 return new(stream);
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку для очистки корзины
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BtnEmptyTheTrash_Click(object? sender, RoutedEventArgs e)
         {
             if (GlobalBuffer.CurrentUserID > -1)
@@ -102,6 +105,9 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Метод для очистки корзины
+        /// </summary>
         private async Task EmptyTheTrash()
         {
             try
@@ -115,6 +121,9 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Метод подсчета общей стоимости корзины
+        /// </summary>
         private async void SetTotalCost()
         {
             decimal? totalCost;
@@ -131,6 +140,9 @@ namespace AvaloniaApplication.Views
             tbTotalCost.Text = $"Общая сумма: {(totalCost == null ? 0.00m : totalCost)}";
         }
 
+        /// <summary>
+        /// Метод для обновления корзины
+        /// </summary>
         public async void Refresh()
         {
             var orderDetails = await APIWork.GetProductsInCart();
@@ -156,8 +168,6 @@ namespace AvaloniaApplication.Views
                         productControl.CountInOrder = orderDetail.Quantity;
                         productControl.CurrentCart = this;
                         productControl.buttonCart.Content = $"             {productControl.CountInOrder}             ";
-                        //productControl.plus.Click += ProductPlusButton_Click;
-                        //productControl.minus.Click += ProductPlusButton_Click;
                         Grid.SetRow(productControl, row);
                         Grid.SetColumn(productControl, column);
                         GridForCart.Children.Add(productControl);
@@ -173,6 +183,11 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку для формирования заказа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnPlaceAnOrder_Click(object? sender, RoutedEventArgs e)
         {
             if (GridForCart.Children.Any())

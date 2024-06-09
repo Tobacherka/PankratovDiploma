@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Views
 {
+    /// <summary>
+    /// Класс регистрации
+    /// </summary>
     public partial class Registration : UserControl
     {
         private Type _type;
@@ -23,6 +26,11 @@ namespace AvaloniaApplication.Views
             _type = type;
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку ЗАРЕГИСТРИРОВАТЬСЯ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RegistrationBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             if (PasswordTextBox.Text != PasswordRepeatTextBox.Text)
@@ -60,6 +68,11 @@ namespace AvaloniaApplication.Views
             Check();
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку для авторизации
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LogInBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             Authorization authorization = new Authorization(_type);
@@ -67,6 +80,9 @@ namespace AvaloniaApplication.Views
             GlobalBuffer._mainGrid.Children.Add(authorization);
         }
 
+        /// <summary>
+        /// Проверка полей на заполненность
+        /// </summary>
         void Check()
         {
             if (string.IsNullOrWhiteSpace(NameTextBox.Text) ||

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Views
 {
+    /// <summary>
+    /// Класс авторизации
+    /// </summary>
     public partial class Authorization : UserControl
     {
         public Type Type { get; set; }
@@ -15,6 +18,11 @@ namespace AvaloniaApplication.Views
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// Конструктор, использующийся при необходимости открыть после авторизации то окно, которое изначально хотел увидеть пользователь
+        /// </summary>
+        /// <param name="type">Тип окна</param>
+        /// <param name="parametr">Параметры для открытия окна</param>
         public Authorization(Type type, object? parametr = null)
         {
             InitializeComponent();
@@ -24,6 +32,11 @@ namespace AvaloniaApplication.Views
             LogInBtn.Click += LogInBtn_Click;
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку для авторизации
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LogInBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(LoginText.Text) && !string.IsNullOrEmpty(PasswordText.Text))
@@ -32,6 +45,9 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Проверка данных, введенных пользователем
+        /// </summary>
         private async void CheckDataForAuthorizaion()
         {
             var responseArray = await APIWork.SendRequest("Authorization", LoginText.Text, PasswordText.Text);
@@ -53,6 +69,11 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия кнопки для перехода к регистрации
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SingUpBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             Registration registration = new Registration(Type);

@@ -11,11 +11,15 @@ using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Classes
 {
+    /// <summary>
+    /// Класс для работы с API
+    /// </summary>
     public static class APIWork
     {
         private static readonly HttpClient _httpClient = new();
+
         /// <summary>
-        /// Статичный метод запроса к API
+        /// Статичный метод post запроса к API
         /// </summary>
         public static async Task<List<string>> SendRequest(string command, string? parameter = null, string? parameter2 = null, string? parameter3 = null, string? parameter4 = null, string? parameter5 = null, string? parameter6 = null, string? parameter7 = null)
         {
@@ -72,6 +76,10 @@ namespace AvaloniaApplication.Classes
             }
         }
 
+        /// <summary>
+        /// get запрос для получения товаров в корзине пользователя
+        /// </summary>
+        /// <returns>Список товаров</returns>
         public static async Task<List<DbOrderDetail>?> GetProductsInCart()
         {
             try
@@ -85,6 +93,10 @@ namespace AvaloniaApplication.Classes
             }
         }
 
+        /// <summary>
+        /// get запрос для получения информации о заказе, который в статусе "в корзине"
+        /// </summary>
+        /// <returns>Заказ</returns>
         public static async Task<DbOrder?> GetUserCart()
         {
             try
@@ -98,6 +110,10 @@ namespace AvaloniaApplication.Classes
             }
         }
 
+        /// <summary>
+        /// get запрос для получения всех товаров
+        /// </summary>
+        /// <returns>Список товаров</returns>
         public static async Task<List<DbProduct>?> GetProducts()
         {
             try
@@ -111,6 +127,11 @@ namespace AvaloniaApplication.Classes
             }
         }
 
+        /// <summary>
+        /// get запрос для получения товара по его id
+        /// </summary>
+        /// <param name="productID">Id товара</param>
+        /// <returns>Товар</returns>
         public static async Task<DbProduct?> GetProductById(int productID)
         {
             try
@@ -124,6 +145,11 @@ namespace AvaloniaApplication.Classes
             }
         }
 
+        /// <summary>
+        /// get запрос для получения пользователя по его id
+        /// </summary>
+        /// <param name="userID">Id пользвателя</param>
+        /// <returns>Пользователь</returns>
         public static async Task<DbUser?> GetUserById(int userID)
         {
             try

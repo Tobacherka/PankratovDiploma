@@ -11,7 +11,7 @@ namespace AvaloniaApplication.Classes
     public class WidthMinusPaddingConverter : IValueConverter
     {
         private const double SomePadding = 5; // Значение отступов.
-        private const double WidthOfButtons = 30; // Ообщая ширина кнопок.
+        private const double WidthOfButtons = 30; // Общая ширина кнопок.
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

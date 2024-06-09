@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Classes
 {
+    /// <summary>
+    /// Модель для пользователя
+    /// </summary>
     public class DbUser
     {
         public int UserID { get; set; }

@@ -6,6 +6,9 @@ using System.Dynamic;
 
 namespace AvaloniaApplication.Views
 {
+    /// <summary>
+    /// Класс диалогового окна для ввода данных банковской карты
+    /// </summary>
     public partial class CardInputDialog : UserControl
     {
         public event EventHandler<string?> CardNumberSubmitted;
@@ -17,6 +20,11 @@ namespace AvaloniaApplication.Views
             CancelButton.Click += CancelButton_Click;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки ОК
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OkButton_Click(object? sender, RoutedEventArgs e)
         {
             if (ValidateInput())
@@ -27,12 +35,21 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки ОТМЕНА
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelButton_Click(object? sender, RoutedEventArgs e)
         {
             Cancelled?.Invoke(this, EventArgs.Empty);
             //this.Close(null);
         }
 
+        /// <summary>
+        /// Валидация введенных данных пользователем
+        /// </summary>
+        /// <returns>Валидность</returns>
         private bool ValidateInput()
         {
             // Простая валидация полей

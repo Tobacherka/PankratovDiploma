@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Classes
 {
+    /// <summary>
+    /// Класс для хранения данных, необходимых в различных частях клиентского кода
+    /// </summary>
     public static class GlobalBuffer
     {
         public static Grid _mainGrid;

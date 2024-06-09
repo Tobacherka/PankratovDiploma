@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace AvaloniaApplication.Classes
 {
+    /// <summary>
+    /// Модель для заказа
+    /// </summary>
     public class DbOrder
     {
         public int UserID { get; set; }

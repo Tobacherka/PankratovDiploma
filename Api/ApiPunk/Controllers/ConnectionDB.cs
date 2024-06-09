@@ -21,7 +21,7 @@ namespace ApiPunk.Controllers
 
         public CommandController()
         {
-            _connectionString = "Server=127.0.0.1,1433;Database=Shop;User Id=sa;Password=4j55w#W^&vEi@5~ci2zTPNZk@nYtCHtd;Encrypt=False;";
+            _connectionString = "Data Source=91.108.241.127,1433;Database=Shop;User Id=sa;Password=4j55w#W^&vEi@5~ci2zTPNZk@nYtCHtd;Encrypt=False;TrustServerCertificate=True;";
             _context = new ApplicationDbContext(_connectionString);
         }
 

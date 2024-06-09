@@ -10,6 +10,9 @@ using System.Xml.Serialization;
 
 namespace AvaloniaApplication.Views
 {
+    /// <summary>
+    /// Класс товара
+    /// </summary>
     public partial class Product : UserControl
     {
         public int Id { get; set; }
@@ -36,6 +39,11 @@ namespace AvaloniaApplication.Views
             ProductSettings(product);
         }
 
+        /// <summary>
+        /// Обработчик нажатия кнопки ПОДРОБНЕЕ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object? sender, RoutedEventArgs e)
         {
             GlobalBuffer._mainGrid.Children.Clear();
@@ -43,6 +51,11 @@ namespace AvaloniaApplication.Views
             GlobalBuffer._mainGrid.Children.Add(cardProduct);
         }
 
+        /// <summary>
+        /// Обработчик нажатия кнопки для добавления товара в корзину
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddToCartButton_Click(object? sender, RoutedEventArgs e)
         {
             if (GlobalBuffer.CurrentUserID < 0)
@@ -62,6 +75,11 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку ПЛЮС
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PlusButton_Click(object? sender, RoutedEventArgs e)
         {
             CountInOrder++;
@@ -69,6 +87,11 @@ namespace AvaloniaApplication.Views
             buttonCart.Content = $"             {CountInOrder}             ";
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку МИНУС
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private async void MinusButton_Click(object? sender, RoutedEventArgs args)
         {
             CountInOrder--;
@@ -93,6 +116,11 @@ namespace AvaloniaApplication.Views
             }
         }
 
+        /// <summary>
+        /// Метод для добавления товара в корзину
+        /// </summary>
+        /// <param name="isNew"></param>
+        /// <returns></returns>
         public async Task AddToCart(bool isNew)
         {
             if (isNew)
@@ -109,16 +137,14 @@ namespace AvaloniaApplication.Views
             }
             catch
             {
-               // CurrentCart.tbTotalCost.Text = string.Empty;
+               
             }
         }
 
-        //public async Task<DbOrderDetail?>? GetOrderDetail()
-        //{
-        //    var response = await APIWork.GetProductsInCart();
-        //    return response?.Where(x => x?.ProductID == Id).FirstOrDefault();
-        //}
-
+        /// <summary>
+        /// Метод для заполнения параметров товара
+        /// </summary>
+        /// <param name="product"></param>
         public async void ProductSettings(Product product)
         {
             Id = product.Id;

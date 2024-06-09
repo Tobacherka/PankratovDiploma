@@ -9,18 +9,23 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace AvaloniaApplication.Views
 {
+    /// <summary>
+    ///  ласс карточки товара
+    /// </summary>
     public partial class CardProduct : UserControl
     {
         public Product ProductControl { get; set; }
-        //public DbProduct? Product {  get; private set; }
         public CardProduct()
         {
             InitializeComponent();
         }
+        /// <summary>
+        ///  онструтор, использующийс€ дл€ создани€ карточки товара, выбранного на главной странице
+        /// </summary>
+        /// <param name="product">“овар</param>
         public CardProduct(Product product)
         {
             ProductControl = new(product);
-            //Product = GlobalBuffer.Products?.FirstOrDefault(x => x.Id == product.Id);
             InitializeComponent();
             GeneredItem();
             ChangeBtn1.Click += ChangeBtn1_Click;
@@ -47,11 +52,11 @@ namespace AvaloniaApplication.Views
             else textbox3.IsEnabled = false;
         }
 
+        /// <summary>
+        /// ћетод дл€ заполнени€ всех полей карточки товара
+        /// </summary>
         public void GeneredItem()
         {
-            //ProductControl.plus.IsVisible = false;
-            //ProductControl.minus.IsVisible = false;
-            //ProductControl.buttonCart.IsVisible = false;
             ProductControl.buttonOrders.IsVisible = false;
             ProductControl.menuOrders.IsVisible = false;
             ProductControl.border.CornerRadius = new Avalonia.CornerRadius(30);
@@ -82,38 +87,35 @@ namespace AvaloniaApplication.Views
             spReviews.IsVisible = false;
         }
 
+        /// <summary>
+        /// ћетод дл€ заполнени€ характеристик товара
+        /// </summary>
         public async void FillingTheCharacteristics()
         {
             var product = await APIWork.GetProductById(ProductControl.Id);
-            //lbCharacteristics.Items.Clear();
 
             if (!string.IsNullOrEmpty(product?.Description))
             {
-                //lbCharacteristics.Items.Add("Х ќписание: " + product?.Description);
                 tbDescription.Text = "Х ќписание: " + product?.Description;
             }
 
             if (product?.Weight != null)
             {
-                //lbCharacteristics.Items.Add("Х ¬ес: " + product?.Weight.ToString());
                 tbWeight.Text = "Х ¬ес: " + product?.Weight.ToString();
             }
 
             if (!string.IsNullOrEmpty(product?.Materials))
             {
-                //lbCharacteristics.Items.Add("Х ћатериалы: " + product?.Materials);
                 tbMaterials.Text = "Х ћатериалы: " + product?.Materials;
             }
 
             if (!string.IsNullOrEmpty(product?.Color))
             {
-                //lbCharacteristics.Items.Add("Х ÷вет: " + product?.Color);
                 tbColor.Text = "Х ÷вет: " + product?.Color;
             }
 
             if (!string.IsNullOrEmpty(product?.Warranty))
             {
-                //lbCharacteristics.Items.Add("Х √аранти€: " + product?.Warranty);
                 tbWarranty.Text = "Х √аранти€: " + product?.Warranty;
             }
         }

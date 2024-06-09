@@ -17,10 +17,12 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-//в лист боксах (категория и фильтр) должны лежать текст блоки (чтобы работала анимация при наведении)
 
 namespace AvaloniaApplication.Views
 {
+    /// <summary>
+    /// Класс каталога
+    /// </summary>
     public partial class Catalog : UserControl
     {
         public Catalog()
@@ -32,12 +34,11 @@ namespace AvaloniaApplication.Views
             SearchBtn.Click += SearchBtn_Click;
         }
 
+        /// <summary>
+        /// Метод для генерации каталога
+        /// </summary>
         private async void GeneredItems()
         {
-            //var file = await APIWork.SendRequest("SendMeAllProduct");
-            //string json = await File.ReadAllTextAsync(file[0]);
-
-            //GlobalBuffer.Products = JsonConvert.DeserializeObject<List<DbProduct>>(json);
             GlobalBuffer.Products = await APIWork.GetProducts();
 
             var products = GlobalBuffer.Products;
@@ -97,44 +98,13 @@ namespace AvaloniaApplication.Views
             Search.IsVisible = true;
         }
 
+        /// <summary>
+        /// Метод для конвертации массива байтов в изображение
+        /// </summary>
+        /// <param name="bytes">Массив байтов</param>
+        /// <returns>Изображение</returns>
         private Bitmap ImageConverter(byte[]? bytes)
         {
-            //try
-            //{
-            //    if (bytes == null)
-            //    {
-            //        string filePath = "Assets\\photo.png";
-
-            //        // Ensure the file exists
-            //        if (!File.Exists(filePath))
-            //        {
-            //            throw new FileNotFoundException("The specified file was not found.", filePath);
-            //        }
-
-            //        // Load the bitmap
-            //        return new Bitmap(filePath);
-            //    }
-            //    using (MemoryStream stream = new MemoryStream(bytes))
-            //        return new(stream);
-            //}
-            //catch (FileNotFoundException ex)
-            //{
-            //    Console.WriteLine($"File not found: {ex.Message}");
-            //    // Handle the error or return a default image
-            //    return null;
-            //}
-            //catch (UnauthorizedAccessException ex)
-            //{
-            //    Console.WriteLine($"Access denied: {ex.Message}");
-            //    // Handle the error or return a default image
-            //    return null;
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"An error occurred: {ex.Message}");
-            //    // Handle the error or return a default image
-            //    return null;
-            //}
             if (bytes == null)
             {
                 var uri = new Uri("avares://AvaloniaApplication/Assets/photo.png");
