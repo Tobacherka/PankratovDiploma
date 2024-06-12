@@ -5,7 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
         x:Class="AvaloniaApplication.Views.CardInputDialog">
 
-	<Grid RowDefinitions="* * *" ColumnDefinitions="2* 1.5* 2*">
+	<Grid RowDefinitions="* 1.25* *" ColumnDefinitions="* * *">
 		<Border Grid.Row="1" Grid.Column="1" Background="White" Margin="12.5" CornerRadius="30" BoxShadow="0 0 25 #7f000000">
 			<StackPanel Margin="25" Spacing="7.5">
 				<TextBlock FontSize="15" FontWeight="Bold" Text="Данные банковской карты:" TextDecorations="Underline"/>

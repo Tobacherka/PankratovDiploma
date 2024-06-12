@@ -84,7 +84,7 @@ namespace AvaloniaApplication.Classes
         {
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<List<DbOrderDetail>?>($"http://91.108.241.127:81/Command/cart/products-in-cart?userID={GlobalBuffer.CurrentUserID}");
+                var response = await _httpClient.GetFromJsonAsync<List<DbOrderDetail>?>($"http://localhost:5267/Command/cart/products-in-cart?userID={GlobalBuffer.CurrentUserID}");
                 return response;
             }
             catch
@@ -101,7 +101,7 @@ namespace AvaloniaApplication.Classes
         {
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<DbOrder?>($"http://91.108.241.127:81/Command/cart?userID={GlobalBuffer.CurrentUserID}");
+                var response = await _httpClient.GetFromJsonAsync<DbOrder?>($"http://localhost:5267/Command/cart?userID={GlobalBuffer.CurrentUserID}");
                 return response;
             }
             catch
@@ -118,7 +118,7 @@ namespace AvaloniaApplication.Classes
         {
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<List<DbProduct>?>($"http://91.108.241.127:81/Command/products");
+                var response = await _httpClient.GetFromJsonAsync<List<DbProduct>?>($"http://localhost:5267/Command/products");
                 return response;
             }
             catch 
@@ -136,7 +136,7 @@ namespace AvaloniaApplication.Classes
         {
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<DbProduct?>($"http://91.108.241.127:81/Command/products/product?productID={productID}");
+                var response = await _httpClient.GetFromJsonAsync<DbProduct?>($"http://localhost:5267/Command/products/product?productID={productID}");
                 return response;
             }
             catch
@@ -154,7 +154,7 @@ namespace AvaloniaApplication.Classes
         {
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<DbUser?>($"http://91.108.241.127:81/Command/users/user?userID={userID}");
+                var response = await _httpClient.GetFromJsonAsync<DbUser?>($"http://localhost:5267/Command/users/user?userID={userID}");
                 return response;
             }
             catch

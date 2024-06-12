@@ -46,7 +46,10 @@ namespace AvaloniaApplication.Views
                     {
                         await ShowCardInputDialog();
                     }
-                    ShowNotificationDialog();
+                    else
+                    {
+                        ShowNotificationDialog();
+                    }
                 }
                 else
                     await FinalizeOrder();
@@ -58,10 +61,10 @@ namespace AvaloniaApplication.Views
         /// </summary>
         private void ShowNotificationDialog()
         {
-                _overlayPanel.Children.Clear();
-            var maskedCardNumber = "**** **** **** " + user.BankCardNumber.Substring(user.BankCardNumber.Length - 4);
+            _overlayPanel.Children.Clear();
+            var maskedCardNumber = "**** **** **** " + user?.BankCardNumber?.Substring(user.BankCardNumber.Length - 4);
             var cardMessage = $"Платеж выполнен с банковской карты {maskedCardNumber}.";
-            var emailMessage = $"Чек отправлен на электронную почту {user.Email}.";
+            var emailMessage = $"Чек отправлен на электронную почту {user?.Email}.";
             var notification = new NotificationDialog(cardMessage, emailMessage);
 
             notification.OkClicked += async (s, e) =>
@@ -87,7 +90,6 @@ namespace AvaloniaApplication.Views
 
                 await APIWork.SendRequest("SetCardNumber", GlobalBuffer.CurrentUserID.ToString(), cardNumber);
                 user = await APIWork.GetUserById(GlobalBuffer.CurrentUserID);
-
                 ShowNotificationDialog();
             };
 

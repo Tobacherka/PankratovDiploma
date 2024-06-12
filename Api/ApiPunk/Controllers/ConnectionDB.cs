@@ -30,7 +30,7 @@ namespace ApiPunk.Controllers
         {
             switch (command)
             {
-                case "/":
+                case "Registration":
                     {
                         try
                         {

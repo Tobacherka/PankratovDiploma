@@ -12,6 +12,6 @@ namespace AvaloniaApplication.Classes
     public static class Connection
     {
         // Строка подключения к api
-        public static UriBuilder ConnectionDB = new UriBuilder("http://91.108.241.127:81/Command");
+        public static UriBuilder ConnectionDB = new UriBuilder("http://localhost:5267/Command");
     }
 }
