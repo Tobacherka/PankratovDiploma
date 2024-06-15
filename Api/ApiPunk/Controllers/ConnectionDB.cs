@@ -312,7 +312,6 @@ namespace ApiPunk.Controllers
             }
             catch
             {
-
                 return NotFound();
             }
         }

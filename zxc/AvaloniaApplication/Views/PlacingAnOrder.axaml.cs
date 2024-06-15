@@ -52,7 +52,7 @@ namespace AvaloniaApplication.Views
                     }
                 }
                 else
-                    await FinalizeOrder();
+                    ShowNotificationDialogForCashPayment();
             }
         }
 
@@ -65,6 +65,26 @@ namespace AvaloniaApplication.Views
             var maskedCardNumber = "**** **** **** " + user?.BankCardNumber?.Substring(user.BankCardNumber.Length - 4);
             var cardMessage = $"Платеж выполнен с банковской карты {maskedCardNumber}.";
             var emailMessage = $"Чек отправлен на электронную почту {user?.Email}.";
+            var notification = new NotificationDialog(cardMessage, emailMessage);
+
+            notification.OkClicked += async (s, e) =>
+            {
+                _overlayPanel.IsHitTestVisible = false;
+                await FinalizeOrder();
+            };
+
+            _overlayPanel.Children.Add(notification);
+            _overlayPanel.IsHitTestVisible = true;
+        }
+
+        /// <summary>
+        /// Метод для вывода уведомления
+        /// </summary>
+        private void ShowNotificationDialogForCashPayment()
+        {
+            _overlayPanel.Children.Clear();
+            var cardMessage = $"Заказ будет оплачен наличными при получении.";
+            var emailMessage = $"Дополнительная информация по заказу отправлена на электронную почту {user?.Email}.";
             var notification = new NotificationDialog(cardMessage, emailMessage);
 
             notification.OkClicked += async (s, e) =>

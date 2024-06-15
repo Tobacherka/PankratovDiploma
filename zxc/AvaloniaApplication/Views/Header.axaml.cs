@@ -17,8 +17,8 @@ namespace AvaloniaApplication.Views
             InitializeComponent();
             CartBtn.IsVisible = true;
             ProfileBtn.IsVisible = true;
-            ChatBtn.IsVisible = true;
-            NotificationsBtn.IsVisible = true;
+            //ChatBtn.IsVisible = true;
+            //NotificationsBtn.IsVisible = true;
             IconBtn.Click += IconBtn_Click;
             CartBtn.Click += CartBtn_Click;
             ProfileBtn.Click += ProfileBtn_Click;

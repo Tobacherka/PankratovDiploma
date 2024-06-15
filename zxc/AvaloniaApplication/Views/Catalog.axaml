@@ -13,7 +13,7 @@
 
 			<Border x:Name="Search" Grid.Column="0" IsVisible="false" CornerRadius="7" BorderThickness="2" BorderBrush="black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 				<Grid>
-					<TextBox Classes="search" FontSize="11" Background="White" CornerRadius="6" MinHeight="0" BorderThickness="0" Padding="5 2.5 21 2.5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Watermark="Search" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+					<TextBox x:Name="SearchTb" Classes="search" FontSize="11" Background="White" CornerRadius="6" MinHeight="0" BorderThickness="0" Padding="5 2.5 21 2.5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Watermark="Search" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
 					<Button Background="Transparent" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="1.75" Height="17.5">
 						<Image Source="{SvgImage /Assets/search.svg}"/>
@@ -24,12 +24,12 @@
 		
 		<Grid Grid.Row="1" ColumnDefinitions="* 60*">
 			<Grid Grid.Column="0" RowDefinitions="auto auto">
-				<Button Grid.Row="0" Background="Transparent" Margin="0 10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+				<Button IsVisible="False" Grid.Row="0" Background="Transparent" Margin="0 10" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
 					<Image Source="{SvgImage /Assets/menu of categories.svg}"/>
 					<Button.Flyout >
 						<Flyout Placement="RightEdgeAlignedTop">
 							<Border Background="#ffffff" CornerRadius="10" BorderThickness="1.5" BorderBrush="#3f000000" Margin="2.5 0 0 0">
-								<ListBox Classes="catalog" Background="Transparent" Padding="15 7.5" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+								<ListBox x:Name="LstBoxCategories" Classes="catalog" Background="Transparent" Padding="15 7.5" ScrollViewer.VerticalScrollBarVisibility="Hidden">
 									<ListBoxItem>Test</ListBoxItem>
 									<ListBoxItem>Test</ListBoxItem>
 									<ListBoxItem>Test</ListBoxItem>
@@ -41,7 +41,7 @@
 					</Button.Flyout>
 				</Button>
 
-				<Button Grid.Row="1" Background="Transparent" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+				<Button IsVisible="False" Grid.Row="1" Background="Transparent" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
 					<Image Source="{SvgImage /Assets/filter.svg}"/>
 					<Button.Flyout >
 						<Flyout Placement="RightEdgeAlignedTop">

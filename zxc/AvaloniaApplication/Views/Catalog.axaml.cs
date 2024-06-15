@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
@@ -25,6 +26,7 @@ namespace AvaloniaApplication.Views
     /// </summary>
     public partial class Catalog : UserControl
     {
+        private List<Control>? _allProducts;
         public Catalog()
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace AvaloniaApplication.Views
             Search.IsVisible = false;
             GeneredItems();
             SearchBtn.Click += SearchBtn_Click;
+            SearchTb.TextChanged += SearchTb_TextChanged;
         }
 
         /// <summary>
@@ -90,6 +93,8 @@ namespace AvaloniaApplication.Views
                     GridForCatalog.Children.Add(productControl);
                 }
             }
+
+            _allProducts = GridForCatalog.Children.ToList();
         }
 
         private void SearchBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -117,5 +122,87 @@ namespace AvaloniaApplication.Views
             using (MemoryStream stream = new MemoryStream(bytes))
                 return new(stream);
         }
+
+        private void SearchTb_TextChanged(object? sender, RoutedEventArgs e)
+        {
+            string? searchText = SearchTb.Text?.ToLower();
+            SearchGridForCatalog(searchText);
+        }
+
+        private void LstBoxCategories_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                var selectedItem = e.AddedItems[0] as ListBoxItem;
+                if (selectedItem != null)
+                {
+                    var filteredCatalog = _allProducts.Where(child =>
+                    {
+                        if (child is Product product)
+                        {
+                            if (product.category.Text.ToLower() == selectedItem.Content.ToString().ToLower())
+                            {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }).ToList();
+                    GridFilling(filteredCatalog);
+                }
+            }
+        }
+
+        private void SearchGridForCatalog(string? searchText)
+        {
+            GridForCatalog.Children.Clear();
+
+            var filteredCatalog = _allProducts?.Where(child =>
+            {
+                if (child is Product product)
+                {
+                    if (product.category.Text?.ToLower().Contains(searchText ?? string.Empty) == true ||
+                    product.name.Text?.ToLower().Contains(searchText ?? string.Empty) == true ||
+                    product.price.Text?.ToLower().Contains(searchText ?? string.Empty) == true)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }).ToList();
+            GridFilling(filteredCatalog);
+        }
+
+        private void GridFilling(List<Control>? products)
+        {
+            if (products == null)
+                return;
+
+            int column = 0, row = 0;
+            foreach (var product in products)
+            {
+                if (column < 6)
+                {
+                    Grid.SetRow(product, row);
+                    Grid.SetColumn(product, column);
+                    GridForCatalog.Children.Add(product);
+
+                    column++;
+                }
+                else
+                {
+                    row++;
+                    column = 0;
+                    Grid.SetRow(product, row);
+                    Grid.SetColumn(product, column);
+                    GridForCatalog.Children.Add(product);
+                }
+            }
+        }
+
+        private void LstBoxCategoriesFilling(List<Control> categories)
+        {
+            
+        }
+
     }
 }

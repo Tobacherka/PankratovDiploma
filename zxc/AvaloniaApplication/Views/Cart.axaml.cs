@@ -137,7 +137,7 @@ namespace AvaloniaApplication.Views
             {
                 totalCost = 0.00m;
             }
-            tbTotalCost.Text = $"Общая сумма: {(totalCost == null ? 0.00m : totalCost)}";
+            tbTotalCost.Text = $"Общая сумма: {(totalCost == null ? 0.00m : totalCost?.ToString("F2"))}";
         }
 
         /// <summary>

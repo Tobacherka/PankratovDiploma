@@ -21,7 +21,7 @@
 					<TextBox x:Name="tbAddress" Classes="black" IsEnabled="False" FontSize="11" CornerRadius="7" Background="Transparent" BorderThickness="1.25" BorderBrush="#000000" MinHeight="0" Padding="5" Watermark="Не указано" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 
 					<TextBlock Margin="0 7.5 0 0" FontSize="13" FontWeight="Medium" Text="Банковская карта:"/>
-					<TextBox x:Name="tbBandCard" Classes="black" IsEnabled="False" FontSize="11" CornerRadius="7" Background="Transparent" BorderThickness="1.25" BorderBrush="#000000" MinHeight="0" Padding="5" Watermark="Не указано" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+					<TextBox x:Name="tbBankCard" Classes="black" IsEnabled="False" FontSize="11" CornerRadius="7" Background="Transparent" BorderThickness="1.25" BorderBrush="#000000" MinHeight="0" Padding="5" Watermark="Не указано" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 				</StackPanel>
 					
 				<StackPanel Grid.Row="1" Margin="0 25 0 0" Spacing="7.5">

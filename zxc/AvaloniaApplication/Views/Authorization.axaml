@@ -18,7 +18,7 @@
 				<TextBox x:Name="LoginText" Classes="red" Grid.Row="1" CornerRadius="7" Margin="0 5" Background="#3fff0000" BorderThickness="0" FontSize="11" MinHeight="0" Padding="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Watermark="Электронная почта"/>
 				<TextBox x:Name="PasswordText" Classes="red" Grid.Row="2" CornerRadius="7" Margin="0 5" Background="#3fff0000" BorderThickness="0" FontSize="11" MinHeight="0" Padding="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PasswordChar="*" Watermark="Пароль"/>
 
-				<Button Grid.Row="3" Background="Transparent" Padding="0" FontSize="11" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Right">
+				<Button Grid.Row="3" Background="Transparent" Padding="0" FontSize="11" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Right" IsVisible="False">
 					<TextBlock Text="Забыли пароль?"/>
 				</Button>
 				<TextBlock x:Name="ErrorText" Margin="0 2.5" Grid.Row="4" Text="" FontSize="11" VerticalAlignment="Center"/>
