@@ -47,8 +47,16 @@ namespace AvaloniaApplication.Views
         private void Button_Click(object? sender, RoutedEventArgs e)
         {
             GlobalBuffer._mainGrid.Children.Clear();
-            CardProduct cardProduct = new(new Product(this));
-            GlobalBuffer._mainGrid.Children.Add(cardProduct);
+            if (GlobalBuffer.CurrentUserID == 1) 
+            { 
+                SettingsProduct settingsProduct = new SettingsProduct();
+                GlobalBuffer._mainGrid.Children.Add(settingsProduct);
+            }
+            else
+            {
+                CardProduct cardProduct = new(new Product(this));
+                GlobalBuffer._mainGrid.Children.Add(cardProduct);
+            }
         }
 
         /// <summary>

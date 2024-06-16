@@ -1,4 +1,4 @@
-using Avalonia;
+п»їusing Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
@@ -22,7 +22,7 @@ using System.Xml.Serialization;
 namespace AvaloniaApplication.Views
 {
     /// <summary>
-    /// Класс каталога
+    /// РљР»Р°СЃСЃ РєР°С‚Р°Р»РѕРіР°
     /// </summary>
     public partial class Catalog : UserControl
     {
@@ -38,7 +38,7 @@ namespace AvaloniaApplication.Views
         }
 
         /// <summary>
-        /// Метод для генерации каталога
+        /// РњРµС‚РѕРґ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РєР°С‚Р°Р»РѕРіР°
         /// </summary>
         private async void GeneredItems()
         {
@@ -57,7 +57,7 @@ namespace AvaloniaApplication.Views
                     var productControl = new Product(true);
                     productControl.Id = product.Id;
                     productControl.name.Text = product.Name;
-                    productControl.price.Text = product.Price.ToString();
+                    productControl.price.Text = product.Price.ToString() + "в‚Ѕ";
                     productControl.category.Text = product.Category;
                     productControl.image.Source = ImageConverter(product.image);
 
@@ -104,10 +104,10 @@ namespace AvaloniaApplication.Views
         }
 
         /// <summary>
-        /// Метод для конвертации массива байтов в изображение
+        /// РњРµС‚РѕРґ РґР»СЏ РєРѕРЅРІРµСЂС‚Р°С†РёРё РјР°СЃСЃРёРІР° Р±Р°Р№С‚РѕРІ РІ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
         /// </summary>
-        /// <param name="bytes">Массив байтов</param>
-        /// <returns>Изображение</returns>
+        /// <param name="bytes">РњР°СЃСЃРёРІ Р±Р°Р№С‚РѕРІ</param>
+        /// <returns>РР·РѕР±СЂР°Р¶РµРЅРёРµ</returns>
         private Bitmap ImageConverter(byte[]? bytes)
         {
             if (bytes == null)
