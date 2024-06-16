@@ -79,7 +79,7 @@ namespace AvaloniaApplication.Views
                     var productControl = new Product(true);
                     productControl.Id = product.Id;
                     productControl.name.Text = product.Name;
-                    productControl.price.Text = product.Price.ToString();
+                    productControl.price.Text = product.Price.ToString() + "₽";
                     productControl.category.Text = product.Category;
                     productControl.image.Source = ImageConverter(product.image);
 
