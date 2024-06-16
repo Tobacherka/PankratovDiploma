@@ -91,6 +91,7 @@ namespace AvaloniaApplication.Views
                     Grid.SetRow(productControl, row);
                     Grid.SetColumn(productControl, column);
                     GridForCatalog.Children.Add(productControl);
+                    column++;
                 }
             }
 

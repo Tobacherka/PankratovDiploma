@@ -35,8 +35,8 @@ namespace AvaloniaApplication.Views
 
             //для дефолт пользователя
             User user = new User();
-            if (GlobalBuffer.CurrentUserID == 1)
-                user.ProductsBtn.IsVisible = false;
+           // if (GlobalBuffer.CurrentUserID == 1)
+            user.ProductsBtn.IsVisible = false;
             user.UsersBtn.IsVisible = false;
             user.LogOutBtn.IsVisible = true;
             user.OrdersBtn.IsVisible = false;

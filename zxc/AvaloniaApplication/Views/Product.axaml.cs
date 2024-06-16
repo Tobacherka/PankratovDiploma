@@ -49,7 +49,7 @@ namespace AvaloniaApplication.Views
             GlobalBuffer._mainGrid.Children.Clear();
             if (GlobalBuffer.CurrentUserID == 1) 
             { 
-                SettingsProduct settingsProduct = new SettingsProduct();
+                SettingsProduct settingsProduct = new(new Product(this));
                 GlobalBuffer._mainGrid.Children.Add(settingsProduct);
             }
             else

@@ -232,6 +232,24 @@ namespace ApiPunk.Controllers
                         return Ok();
                     }
 
+                case "ChangeProduct":
+                    {
+                        int productId = int.Parse(parameter);
+                        decimal newPrice = decimal.Parse(parameter2);
+
+                        var product = await _context.Products
+                            .Where(p => p.Id == productId)
+                            .FirstOrDefaultAsync();
+
+                        if(product != null)
+                        {
+                            product.Price = newPrice;
+                            await _context.SaveChangesAsync();
+                        }
+
+                        return Ok();
+                    }
+
                 default:
                     return NotFound("FailToWorkRequest");
 
