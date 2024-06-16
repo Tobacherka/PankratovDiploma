@@ -1,6 +1,5 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 using Avalonia.Media;
 using AvaloniaApplication.Classes;
 using System.Threading.Tasks;
@@ -17,7 +16,6 @@ namespace AvaloniaApplication.Views
 
         private void LogOutBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            GlobalBuffer.CurrentUserID = -1;
             GlobalBuffer.Name = null;
             Catalog catalog = new Catalog();
             GlobalBuffer._mainGrid.Children.Clear();
@@ -35,20 +33,19 @@ namespace AvaloniaApplication.Views
 
             //для дефолт пользователя
             User user = new User();
-            if (GlobalBuffer.CurrentUserID == 1)
-                user.ProductsBtn.IsVisible = false;
+            user.ProductsBtn.IsVisible = false;
             user.UsersBtn.IsVisible = false;
-            user.LogOutBtn.IsVisible = true;
+            user.LogOutBtn.IsVisible = false;
             user.OrdersBtn.IsVisible = false;
             user.SettingsBtn.IsVisible = false;
             user.GridForUser.RowDefinitions = new RowDefinitions
             {
               new RowDefinition { Height = new GridLength(10, GridUnitType.Star) },
-              new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+              //new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
               //new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
               //new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }
             };
-            user.LogOutBtn.SetValue(Grid.RowProperty, 1);
+            //user.LogOutBtn.SetValue(Grid.RowProperty, 3);
             Grid.SetColumn(user, 0);
             Grid.SetRow(user, 0);
             Grid.SetRowSpan(user, 4);
@@ -82,13 +79,6 @@ namespace AvaloniaApplication.Views
             tbBankCard.Text = dbUser.BankCardNumber;
             tbPhone.Text = dbUser?.Phone;
             tbEmail.Text = dbUser?.Email;
-        }
-
-        private void ProductsBtn_Click(object? sender, RoutedEventArgs e)
-        {
-            Products products = new();
-            GlobalBuffer._mainGrid.Children.Clear();
-            GlobalBuffer._mainGrid.Children.Add(products);
         }
     }
 }

@@ -1,11 +1,6 @@
-ï»¿using Avalonia;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
-using Avalonia.Media.Imaging;
-using Avalonia.Platform;
-using System.IO;
-using System;
-using AvaloniaApplication.Classes;
 
 namespace AvaloniaApplication.Views
 {
@@ -47,26 +42,11 @@ namespace AvaloniaApplication.Views
             product.button.CornerRadius = new Avalonia.CornerRadius(7);
             product.button.Padding = new Thickness(10, 5);
             product.button.FontSize = 13;
-            product.textblock.Text = "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð² ÐºÐ¾Ñ€Ð·Ð¸Ð½Ñƒ";
+            product.textblock.Text = "Äîáàâèòü â êîðçèíó";
             Grid.SetColumn(product, 0);
             Grid.SetRow(product, 0);
             Grid.SetRowSpan(product, 2);
             GridForSettingProduct.Children.Add(product);
-        }
-
-        private Bitmap ImageConverter(byte[]? bytes)
-        {
-            if (bytes == null)
-            {
-                var uri = new Uri("avares://AvaloniaApplication/Assets/photo.png");
-                using (var stream = AssetLoader.Open(uri))
-                {
-                    var bitmap = new Bitmap(stream);
-                    return bitmap;
-                }
-            }
-            using (MemoryStream stream = new MemoryStream(bytes))
-                return new(stream);
         }
     }
 }

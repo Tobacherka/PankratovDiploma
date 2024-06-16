@@ -39,7 +39,7 @@ namespace AvaloniaApplication.Views
             }
             else
             {
-                LoadUsersDataAsync().Wait();
+                LoadUsersDataAsync();
             }
         }
 
@@ -53,8 +53,8 @@ namespace AvaloniaApplication.Views
             if (responseArray != null && responseArray.Any())
             {
                 GlobalBuffer._mainGrid.Children.Clear();
-                GlobalBuffer.CurrentUserID = int.Parse(responseArray[0]);
                 GlobalBuffer._mainGrid.Children.Add((UserControl)Activator.CreateInstance(_type));
+                GlobalBuffer.CurrentUserID = int.Parse(responseArray[0]);
                 GlobalBuffer.Name = NameTextBox.Text;
             }
             else
